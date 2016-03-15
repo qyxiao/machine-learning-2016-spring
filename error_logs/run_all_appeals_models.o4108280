@@ -1,0 +1,561 @@
+Experiment: 20150510-202326.min_required_count.100.l1svc.accuracy.stratify_by_geniss
+Data parameters:
+  Number of opinion shards: 1340
+  Minimum required count: 100
+  Using TF-IDF: True
+Constructing data from scratch...
+Reading input data from from: /scratch/akp258/ml_input_data
+Parsing opinion shard files...
+Computing total n-gram counts...
+Writing n-gram counts to disk...
+Filtering n-grams...
+coded_feature_names:  None
+Building sparse matrix...
+Running tfidf transformation...
+shape:  (15466, 23534)
+number of cases 15466
+Writing input data to disk...
+Feature matrix saved as /scratch/akp258/ml_output_data/feature_matrix.svmlight.shards.1340.mincount.100.tfidf
+Case IDs saved as /scratch/akp258/ml_output_data/case_ids.shards.p.1340.mincount.100.tfidf
+NGram IDs saved as /scratch/akp258/ml_output_data/ngram_ids.shards.p.1340.mincount.100
+Total time spent building data: 835.979176998
+Reading in ngram dictionary test_data/filtered_vocab_map.p.num_shards.508.cutoff.50
+Loading ngram dictionary with 45011 keys
+
+
+Running models for stratum: geniss = 0.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+Log file doesn't exist.  Creating from scratch.
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+
+Running models for stratum: geniss = 1.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.0574610233307
+	 	 pred
+true 	 	 1 	 3
+	 1 	 2400 	 0
+	 3 	 555 	 0
+Percent Accuracy: 81.218%
+Training Accuracy 0.812182741117
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 780 	 0 	 0
+	 2 	 92 	 0 	 0
+	 3 	 169 	 0 	 0
+Percent Accuracy: 74.928%
+Testing Accuracy 0.749279538905
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 5 candidates, totalling 15 fits
+[Parallel(n_jobs=-1)]: Done   9 out of  15 | elapsed:    1.4s remaining:    0.9s
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mJoblibValueError[0m                          Traceback (most recent call last)
+[1;32m/home/akp258/appeals/scripts/models.py[0m in [0;36m<module>[1;34m()[0m
+[0;32m    437[0m [1;33m[0m[0m
+[0;32m    438[0m [1;32mif[0m [0m__name__[0m [1;33m==[0m [1;34m'__main__'[0m[1;33m:[0m[1;33m[0m[0m
+[1;32m--> 439[1;33m     [0mmain[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m
+[1;32m/home/akp258/appeals/scripts/models.py[0m in [0;36mmain[1;34m()[0m
+[0;32m    393[0m                                 [0mfeature_reduction_type[0m[1;33m=[0m[0mFEATURE_REDUCTION_TYPE[0m[1;33m,[0m[1;33m[0m[0m
+[0;32m    394[0m                                 [0mresult_path[0m[1;33m=[0m[0mRESULT_PATH[0m[1;33m,[0m [0mdescription[0m[1;33m=[0m[0mDESCRIPTION[0m[1;33m,[0m[1;33m[0m[0m
+[1;32m--> 395[1;33m                                 parameters_dict = PARAMETERS_DICT,ngrams=ngrams,drop_mixed=DROP_MIXED)
+[0m[0;32m    396[0m [1;33m[0m[0m
+[0;32m    397[0m         [0mRESULTS_CSV_PATH[0m[1;33m=[0m[0mRESULT_PATH[0m[1;33m+[0m[1;34m".csv"[0m[1;33m[0m[0m
+
+[1;32m/home/akp258/appeals/scripts/models.py[0m in [0;36mstratify_and_run_models[1;34m(strat_column, X_full, y_full, filtered_cases_df, train_pct, reg_min_log10, reg_max_log10, scoring, feature_reduction_type, result_path, description, parameters_dict, ngrams, drop_mixed)[0m
+[0;32m    317[0m                           [0mreg_min_log10[0m[1;33m=[0m[0mreg_min_log10[0m[1;33m,[0m [0mreg_max_log10[0m[1;33m=[0m[0mreg_max_log10[0m[1;33m,[0m [0mscoring[0m[1;33m=[0m[0mscoring[0m[1;33m,[0m [0mfeature_reduction_type[0m[1;33m=[0m[0mfeature_reduction_type[0m[1;33m,[0m[1;33m[0m[0m
+[0;32m    318[0m                           [0mresult_path[0m[1;33m=[0m[0mresult_path[0m[1;33m,[0m [0mdescription[0m[1;33m=[0m[0mdescription[0m[1;33m,[0m[1;33m[0m[0m
+[1;32m--> 319[1;33m                           parameters_dict = parameters_dict,ngrams=ngrams,drop_mixed=drop_mixed)
+[0m[0;32m    320[0m [1;33m[0m[0m
+[0;32m    321[0m [1;32mdef[0m [0mmain[0m[1;33m([0m[1;33m)[0m[1;33m:[0m[1;33m[0m[0m
+
+[1;32m/home/akp258/appeals/scripts/models.py[0m in [0;36mrun_models[1;34m(X, y, case_ids, train_pct, reg_min_log10, reg_max_log10, scoring, feature_reduction_type, result_path, description, parameters_dict, ngrams, drop_mixed)[0m
+[0;32m    301[0m                           [0mreg_min_log10[0m[1;33m=[0m[0mreg_min_log10[0m[1;33m,[0m [0mreg_max_log10[0m[1;33m=[0m[0mreg_max_log10[0m[1;33m,[0m [0mscoring[0m[1;33m=[0m[0mscoring[0m[1;33m,[0m [0mfeature_reduction_type[0m[1;33m=[0m[0mfeature_reduction_type[0m[1;33m,[0m[1;33m[0m[0m
+[0;32m    302[0m                           [0mresult_path[0m[1;33m=[0m[0mresult_path[0m[1;33m,[0m [0mdescription[0m[1;33m=[0m[0mdescription[0m[1;33m,[0m[1;33m[0m[0m
+[1;32m--> 303[1;33m                           parameters_dict = parameters_dict,ngrams=ngrams,drop_mixed=drop_mixed)
+[0m[0;32m    304[0m [1;33m[0m[0m
+[0;32m    305[0m def stratify_and_run_models(strat_column,X_full, y_full,filtered_cases_df,
+
+[1;32m/home/akp258/appeals/scripts/models.py[0m in [0;36mtrain_and_score_model[1;34m(X, y, case_ids, model, train_pct, reg_min_log10, reg_max_log10, scoring, feature_reduction_type, result_path, description, parameters_dict, ngrams, drop_mixed)[0m
+[0;32m    255[0m         [1;32mprint[0m [1;34m'Running Model Pipeline...'[0m[1;33m[0m[0m
+[0;32m    256[0m         [0mfitted_model[0m [1;33m=[0m [0mGridSearchCV[0m[1;33m([0m[0mPipeline[0m[1;33m([0m[0mpipeline_steps[0m[1;33m)[0m[1;33m,[0m [0mscoring[0m[1;33m=[0m[0mscoring[0m[1;33m,[0m [0mparam_grid[0m[1;33m=[0m[0mparam_grid[0m[1;33m,[0m [0mverbose[0m[1;33m=[0m[1;36m1[0m[1;33m,[0m [0mn_jobs[0m[1;33m=[0m[1;33m-[0m[1;36m1[0m[1;33m)[0m[1;33m[0m[0m
+[1;32m--> 257[1;33m         [0mfitted_model[0m[1;33m.[0m[0mfit[0m[1;33m([0m[0mX_train[0m[1;33m,[0m [0my_train[0m[1;33m)[0m[1;33m[0m[0m
+[0m[0;32m    258[0m [1;33m[0m[0m
+[0;32m    259[0m         [1;31m#Save these to variables so the log can access[0m[1;33m[0m[1;33m[0m[0m
+
+[1;32m/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/grid_search.pyc[0m in [0;36mfit[1;34m(self, X, y)[0m
+[0;32m    730[0m [1;33m[0m[0m
+[0;32m    731[0m         """
+[1;32m--> 732[1;33m         [1;32mreturn[0m [0mself[0m[1;33m.[0m[0m_fit[0m[1;33m([0m[0mX[0m[1;33m,[0m [0my[0m[1;33m,[0m [0mParameterGrid[0m[1;33m([0m[0mself[0m[1;33m.[0m[0mparam_grid[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[0m
+[0m[0;32m    733[0m [1;33m[0m[0m
+[0;32m    734[0m [1;33m[0m[0m
+
+[1;32m/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/grid_search.pyc[0m in [0;36m_fit[1;34m(self, X, y, parameter_iterable)[0m
+[0;32m    503[0m                                     [0mself[0m[1;33m.[0m[0mfit_params[0m[1;33m,[0m [0mreturn_parameters[0m[1;33m=[0m[0mTrue[0m[1;33m,[0m[1;33m[0m[0m
+[0;32m    504[0m                                     error_score=self.error_score)
+[1;32m--> 505[1;33m                 [1;32mfor[0m [0mparameters[0m [1;32min[0m [0mparameter_iterable[0m[1;33m[0m[0m
+[0m[0;32m    506[0m                 for train, test in cv)
+[0;32m    507[0m [1;33m[0m[0m
+
+[1;32m/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.pyc[0m in [0;36m__call__[1;34m(self, iterable)[0m
+[0;32m    664[0m                 [1;31m# consumption.[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    665[0m                 [0mself[0m[1;33m.[0m[0m_iterating[0m [1;33m=[0m [0mFalse[0m[1;33m[0m[0m
+[1;32m--> 666[1;33m             [0mself[0m[1;33m.[0m[0mretrieve[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m[0;32m    667[0m             [1;31m# Make sure that we get a last message telling us we are done[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    668[0m             [0melapsed_time[0m [1;33m=[0m [0mtime[0m[1;33m.[0m[0mtime[0m[1;33m([0m[1;33m)[0m [1;33m-[0m [0mself[0m[1;33m.[0m[0m_start_time[0m[1;33m[0m[0m
+
+[1;32m/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.pyc[0m in [0;36mretrieve[1;34m(self)[0m
+[0;32m    547[0m                         [1;31m# Convert this to a JoblibException[0m[1;33m[0m[1;33m[0m[0m
+[0;32m    548[0m                         [0mexception_type[0m [1;33m=[0m [0m_mk_exception[0m[1;33m([0m[0mexception[0m[1;33m.[0m[0metype[0m[1;33m)[0m[1;33m[[0m[1;36m0[0m[1;33m][0m[1;33m[0m[0m
+[1;32m--> 549[1;33m                         [1;32mraise[0m [0mexception_type[0m[1;33m([0m[0mreport[0m[1;33m)[0m[1;33m[0m[0m
+[0m[0;32m    550[0m                     [1;32mraise[0m [0mexception[0m[1;33m[0m[0m
+[0;32m    551[0m                 [1;32mfinally[0m[1;33m:[0m[1;33m[0m[0m
+
+[1;31mJoblibValueError[0m: JoblibValueError
+___________________________________________________________________________
+Multiprocessing exception:
+    ...........................................................................
+/home/akp258/anaconda/bin/ipython in <module>()
+      1 #!/home/akp258/anaconda/bin/python
+      2 if __name__ == '__main__':
+      3     import sys
+      4     from IPython import start_ipython
+      5 
+----> 6     sys.exit(start_ipython())
+      7 
+      8 
+      9 
+     10 
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/__init__.py in start_ipython(argv=None, **kwargs={})
+    115     kwargs : various, optional
+    116         Any other kwargs will be passed to the Application constructor,
+    117         such as `config`.
+    118     """
+    119     from IPython.terminal.ipapp import launch_new_instance
+--> 120     return launch_new_instance(argv=argv, **kwargs)
+        launch_new_instance = <bound method MetaHasTraits.launch_instance of <class 'IPython.terminal.ipapp.TerminalIPythonApp'>>
+        argv = None
+        kwargs = {}
+    121 
+    122 def start_kernel(argv=None, **kwargs):
+    123     """Launch a normal IPython kernel instance (as opposed to embedded)
+    124     
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/config/application.py in launch_instance(cls=<class 'IPython.terminal.ipapp.TerminalIPythonApp'>, argv=None, **kwargs={})
+    568         """Launch a global instance of this Application
+    569         
+    570         If a global instance already exists, this reinitializes and starts it
+    571         """
+    572         app = cls.instance(**kwargs)
+--> 573         app.initialize(argv)
+        app.initialize = <bound method TerminalIPythonApp.initialize of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+        argv = None
+    574         app.start()
+    575 
+    576 #-----------------------------------------------------------------------------
+    577 # utility functions, for convenience
+
+...........................................................................
+/home/akp258/appeals/<string> in initialize(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, argv=None)
+      1 
+----> 2 
+      3 
+      4 
+      5 #!/usr/bin/env python
+      6 # encoding: utf-8
+      7 """
+      8 The :class:`~IPython.core.application.Application` object for the command
+      9 line :command:`ipython` program.
+     10 
+     11 Authors
+     12 -------
+     13 
+     14 * Brian Granger
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/config/application.py in catch_config_error(method=<function initialize>, app=<IPython.terminal.ipapp.TerminalIPythonApp object>, *args=(None,), **kwargs={})
+     70     message, and exit the app.
+     71     
+     72     For use on init methods, to prevent invoking excepthook on invalid input.
+     73     """
+     74     try:
+---> 75         return method(app, *args, **kwargs)
+        method = <function initialize>
+        app = <IPython.terminal.ipapp.TerminalIPythonApp object>
+        args = (None,)
+        kwargs = {}
+     76     except (TraitError, ArgumentError) as e:
+     77         app.print_help()
+     78         app.log.fatal("Bad config encountered during initialization:")
+     79         app.log.fatal(str(e))
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/terminal/ipapp.py in initialize(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, argv=None)
+    333         # and draw the banner
+    334         self.init_banner()
+    335         # Now a variety of things that happen after the banner is printed.
+    336         self.init_gui_pylab()
+    337         self.init_extensions()
+--> 338         self.init_code()
+        self.init_code = <bound method TerminalIPythonApp.init_code of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+    339 
+    340     def init_shell(self):
+    341         """initialize the InteractiveShell instance"""
+    342         # Create an InteractiveShell instance.
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/core/shellapp.py in init_code(self=<IPython.terminal.ipapp.TerminalIPythonApp object>)
+    293         if self.hide_initial_ns:
+    294             self.shell.user_ns_hidden.update(self.shell.user_ns)
+    295         
+    296         # command-line execution (ipython -i script.py, ipython -m module)
+    297         # should *not* be excluded from %whos
+--> 298         self._run_cmd_line_code()
+        self._run_cmd_line_code = <bound method TerminalIPythonApp._run_cmd_line_c...Python.terminal.ipapp.TerminalIPythonApp object>>
+    299         self._run_module()
+    300         
+    301         # flush output, so itwon't be attached to the first cell
+    302         sys.stdout.flush()
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/core/shellapp.py in _run_cmd_line_code(self=<IPython.terminal.ipapp.TerminalIPythonApp object>)
+    415 
+    416         # Like Python itself, ignore the second if the first of these is present
+    417         elif self.file_to_run:
+    418             fname = self.file_to_run
+    419             try:
+--> 420                 self._exec_file(fname, shell_futures=True)
+        self._exec_file = <bound method TerminalIPythonApp._exec_file of <IPython.terminal.ipapp.TerminalIPythonApp object>>
+        fname = u'scripts/models.py'
+    421             except:
+    422                 self.log.warn("Error in executing file in user namespace: %s" %
+    423                               fname)
+    424                 self.shell.showtraceback()
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/core/shellapp.py in _exec_file(self=<IPython.terminal.ipapp.TerminalIPythonApp object>, fname=u'scripts/models.py', shell_futures=True)
+    347                                                      shell_futures=shell_futures)
+    348                     else:
+    349                         # default to python, even without extension
+    350                         self.shell.safe_execfile(full_filename,
+    351                                                  self.shell.user_ns,
+--> 352                                                  shell_futures=shell_futures)
+        shell_futures = True
+    353         finally:
+    354             sys.argv = save_argv
+    355 
+    356     def _run_startup_files(self):
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/core/interactiveshell.py in safe_execfile(self=<IPython.terminal.interactiveshell.TerminalInteractiveShell object>, fname=u'/home/akp258/appeals/scripts/models.py', *where=({'BernoulliNB': <class 'sklearn.naive_bayes.BernoulliNB'>, 'GridSearchCV': <class 'sklearn.grid_search.GridSearchCV'>, 'In': [''], 'LinearSVC': <class 'sklearn.svm.classes.LinearSVC'>, 'LogisticRegression': <class 'sklearn.linear_model.logistic.LogisticRegression'>, 'MajorityClassifier': <class __main__.MajorityClassifier>, 'MultinomialNB': <class 'sklearn.naive_bayes.MultinomialNB'>, 'Out': {}, 'Pipeline': <class 'sklearn.pipeline.Pipeline'>, 'SelectFpr': <class 'sklearn.feature_selection.univariate_selection.SelectFpr'>, ...},), **kw={'exit_ignore': False, 'raise_exceptions': False, 'shell_futures': True})
+   2629         with prepended_to_syspath(dname):
+   2630             try:
+   2631                 glob, loc = (where + (None, ))[:2]
+   2632                 py3compat.execfile(
+   2633                     fname, glob, loc,
+-> 2634                     self.compile if kw['shell_futures'] else None)
+        self.compile = <IPython.core.compilerop.CachingCompiler instance>
+        kw = {'exit_ignore': False, 'raise_exceptions': False, 'shell_futures': True}
+   2635             except SystemExit as status:
+   2636                 # If the call was made with 0 or None exit status (sys.exit(0)
+   2637                 # or sys.exit() ), don't bother showing a traceback, as both of
+   2638                 # these are considered normal by the OS:
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/IPython/utils/py3compat.py in execfile(fname=u'/home/akp258/appeals/scripts/models.py', glob={'BernoulliNB': <class 'sklearn.naive_bayes.BernoulliNB'>, 'GridSearchCV': <class 'sklearn.grid_search.GridSearchCV'>, 'In': [''], 'LinearSVC': <class 'sklearn.svm.classes.LinearSVC'>, 'LogisticRegression': <class 'sklearn.linear_model.logistic.LogisticRegression'>, 'MajorityClassifier': <class __main__.MajorityClassifier>, 'MultinomialNB': <class 'sklearn.naive_bayes.MultinomialNB'>, 'Out': {}, 'Pipeline': <class 'sklearn.pipeline.Pipeline'>, 'SelectFpr': <class 'sklearn.feature_selection.univariate_selection.SelectFpr'>, ...}, loc=None, compiler=<IPython.core.compilerop.CachingCompiler instance>)
+    215             where = [ns for ns in [glob, loc] if ns is not None]
+    216             if compiler is None:
+    217                 builtin_mod.execfile(filename, *where)
+    218             else:
+    219                 scripttext = builtin_mod.open(fname).read().rstrip() + '\n'
+--> 220                 exec(compiler(scripttext, filename, 'exec'), glob, loc)
+        compiler = <IPython.core.compilerop.CachingCompiler instance>
+        scripttext = "#our own files\nimport extract_metadata\nimport jo...idation\n\n\n\nif __name__ == '__main__':\n    main()\n"
+        filename = '/home/akp258/appeals/scripts/models.py'
+        glob = {'BernoulliNB': <class 'sklearn.naive_bayes.BernoulliNB'>, 'GridSearchCV': <class 'sklearn.grid_search.GridSearchCV'>, 'In': [''], 'LinearSVC': <class 'sklearn.svm.classes.LinearSVC'>, 'LogisticRegression': <class 'sklearn.linear_model.logistic.LogisticRegression'>, 'MajorityClassifier': <class __main__.MajorityClassifier>, 'MultinomialNB': <class 'sklearn.naive_bayes.MultinomialNB'>, 'Out': {}, 'Pipeline': <class 'sklearn.pipeline.Pipeline'>, 'SelectFpr': <class 'sklearn.feature_selection.univariate_selection.SelectFpr'>, ...}
+        loc = None
+    221 
+    222 
+    223 def annotate(**kwargs):
+    224     """Python 3 compatible function annotation for Python 2."""
+
+...........................................................................
+/home/akp258/appeals/scripts/models.py in <module>()
+    434     # http://scikit-learn.org/stable/modules/grid_search.html#model-specific-cross-validation
+    435 
+    436 
+    437 
+    438 if __name__ == '__main__':
+--> 439     main()
+    440 
+    441 
+    442 
+    443 
+
+...........................................................................
+/home/akp258/appeals/scripts/models.py in main()
+    390         stratify_and_run_models(STRAT_COLUMN,X,y,filtered_cases_df,train_pct=TRAIN_PCT,
+    391                                 reg_min_log10=REG_MIN_LOG10, reg_max_log10=REG_MAX_LOG10, 
+    392                                 scoring=SCORING,
+    393                                 feature_reduction_type=FEATURE_REDUCTION_TYPE,
+    394                                 result_path=RESULT_PATH, description=DESCRIPTION,
+--> 395                                 parameters_dict = PARAMETERS_DICT,ngrams=ngrams,drop_mixed=DROP_MIXED)
+        PARAMETERS_DICT = {'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}
+        ngrams = [u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...]
+        DROP_MIXED = True
+    396 
+    397         RESULTS_CSV_PATH=RESULT_PATH+".csv"
+    398 
+    399         sdf=results.get_results_df(RESULT_PATH)
+
+...........................................................................
+/home/akp258/appeals/scripts/models.py in stratify_and_run_models(strat_column='geniss', X_full=<15466x23534 sparse matrix of type '<type 'numpy... stored elements in Compressed Sparse Row format>, y_full=array([3, 1, 1, ..., 1, 1, 3]), filtered_cases_df=        direct1  geniss  casetyp1  treat  majvot...       NaN       NaN  
+
+[15466 rows x 81 columns], train_pct=0.75, reg_min_log10=-2, reg_max_log10=2, scoring='accuracy', feature_reduction_type='l1svc', result_path='/scratch/akp258/ml_results/model_results.pkl.201...uired_count.100.l1svc.accuracy.stratify_by_geniss', description='20150510-202326.min_required_count.100.l1svc.accuracy.stratify_by_geniss', parameters_dict={'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}, ngrams=[u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...], drop_mixed=True)
+    314 
+    315         print "\n\nRunning models for stratum: %s = %s" %(strat_column,val)
+    316         run_models(X, y, case_ids, train_pct=train_pct,
+    317                           reg_min_log10=reg_min_log10, reg_max_log10=reg_max_log10, scoring=scoring, feature_reduction_type=feature_reduction_type,
+    318                           result_path=result_path, description=description,
+--> 319                           parameters_dict = parameters_dict,ngrams=ngrams,drop_mixed=drop_mixed)
+        parameters_dict = {'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}
+        ngrams = [u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...]
+        drop_mixed = True
+    320 
+    321 def main():
+    322     NGRAM_DICT_FILEPATH = 'test_data/filtered_vocab_map.p.num_shards.508.cutoff.50'
+    323 
+
+...........................................................................
+/home/akp258/appeals/scripts/models.py in run_models(X=<4164x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 3, ..., 3, 1, 1]), case_ids=['X3U08O', 'X9VAUD', 'X53H9V', 'X9VAS2', 'X9VBTC', 'X9VC1C', 'X9VBDK', 'X9VBOR', 'X9VBTA', 'X53GVO', 'X3T529', 'X3JG7I', 'X3IJRM', 'X3IK9T', 'X3IKFR', 'X3T4U9', 'X3IUS2', 'X3IUU1', 'X3IUQG', 'X3JGHL', ...], train_pct=0.75, reg_min_log10=-2, reg_max_log10=2, scoring='accuracy', feature_reduction_type='l1svc', result_path='/scratch/akp258/ml_results/model_results.pkl.201...uired_count.100.l1svc.accuracy.stratify_by_geniss', description='20150510-202326.min_required_count.100.l1svc.accuracy.stratify_by_geniss', parameters_dict={'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}, ngrams=[u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...], drop_mixed=True)
+    298                           parameters_dict = parameters_dict,ngrams=ngrams,drop_mixed=drop_mixed)
+    299     for model in ['naive_bayes','bernoulli_bayes','logistic','svm']:
+    300         train_and_score_model(X, y, case_ids, model, train_pct=train_pct,
+    301                           reg_min_log10=reg_min_log10, reg_max_log10=reg_max_log10, scoring=scoring, feature_reduction_type=feature_reduction_type,
+    302                           result_path=result_path, description=description,
+--> 303                           parameters_dict = parameters_dict,ngrams=ngrams,drop_mixed=drop_mixed)
+        parameters_dict = {'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}
+        ngrams = [u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...]
+        drop_mixed = True
+    304 
+    305 def stratify_and_run_models(strat_column,X_full, y_full,filtered_cases_df,
+    306                             train_pct,reg_min_log10,reg_max_log10,
+    307                             scoring,feature_reduction_type,
+
+...........................................................................
+/home/akp258/appeals/scripts/models.py in train_and_score_model(X=<4164x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 3, ..., 3, 1, 1]), case_ids=['X3U08O', 'X9VAUD', 'X53H9V', 'X9VAS2', 'X9VBTC', 'X9VC1C', 'X9VBDK', 'X9VBOR', 'X9VBTA', 'X53GVO', 'X3T529', 'X3JG7I', 'X3IJRM', 'X3IK9T', 'X3IKFR', 'X3T4U9', 'X3IUS2', 'X3IUU1', 'X3IUQG', 'X3JGHL', ...], model='naive_bayes', train_pct=0.75, reg_min_log10=-2, reg_max_log10=2, scoring='accuracy', feature_reduction_type='l1svc', result_path='/scratch/akp258/ml_results/model_results.pkl.201...uired_count.100.l1svc.accuracy.stratify_by_geniss', description='20150510-202326.min_required_count.100.l1svc.accuracy.stratify_by_geniss', parameters_dict={'coded_feature_names': None, 'min_required_count': 100, 'num_opinion_shards': 1340, 'strat_column': 'geniss', 'strat_value': 1.0, 'tfidf': True}, ngrams=[u'real estat', u'reclam', 'NOT FOUND', u'compani time', u'price', u'purchas price', u'prefer', u'mention', u'insolv', u'continu oper', u'credit', u'award', u'return', u'loss', u'bankruptci', u'mortgag properti', u'case', 'NOT FOUND', u'justifi', u'ed', ...], drop_mixed=True)
+    252             return
+    253         pipeline_steps.append(('classifier', classifier))
+    254 
+    255         print 'Running Model Pipeline...'
+    256         fitted_model = GridSearchCV(Pipeline(pipeline_steps), scoring=scoring, param_grid=param_grid, verbose=1, n_jobs=-1)
+--> 257         fitted_model.fit(X_train, y_train)
+        fitted_model.fit = <bound method GridSearchCV.fit of GridSearchCV(c...func=None,
+       scoring='accuracy', verbose=1)>
+        X_train = <2955x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+        y_train = array([1, 1, 3, ..., 1, 1, 3])
+    258 
+    259         #Save these to variables so the log can access
+    260         grid_scores=[]
+    261         for grid in fitted_model.grid_scores_:
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/grid_search.py in fit(self=GridSearchCV(cv=None, error_score='raise',
+     ..._func=None,
+       scoring='accuracy', verbose=1), X=<2955x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 3, ..., 1, 1, 3]))
+    727         y : array-like, shape = [n_samples] or [n_samples, n_output], optional
+    728             Target relative to X for classification or regression;
+    729             None for unsupervised learning.
+    730 
+    731         """
+--> 732         return self._fit(X, y, ParameterGrid(self.param_grid))
+        self._fit = <bound method GridSearchCV._fit of GridSearchCV(...func=None,
+       scoring='accuracy', verbose=1)>
+        X = <2955x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>
+        y = array([1, 1, 3, ..., 1, 1, 3])
+        self.param_grid = {'feature_reduction__C': [0.01, 0.1, 1, 10, 100]}
+    733 
+    734 
+    735 class RandomizedSearchCV(BaseSearchCV):
+    736     """Randomized search on hyper parameters.
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/grid_search.py in _fit(self=GridSearchCV(cv=None, error_score='raise',
+     ..._func=None,
+       scoring='accuracy', verbose=1), X=<2955x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 3, ..., 1, 1, 3]), parameter_iterable=<sklearn.grid_search.ParameterGrid object>)
+    500         )(
+    501             delayed(_fit_and_score)(clone(base_estimator), X, y, self.scorer_,
+    502                                     train, test, self.verbose, parameters,
+    503                                     self.fit_params, return_parameters=True,
+    504                                     error_score=self.error_score)
+--> 505                 for parameters in parameter_iterable
+        parameters = undefined
+        parameter_iterable = <sklearn.grid_search.ParameterGrid object>
+    506                 for train, test in cv)
+    507 
+    508         # Out is a list of triplet: score, estimator, n_test_samples
+    509         n_fits = len(out)
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/externals/joblib/parallel.py in __call__(self=Parallel(n_jobs=-1), iterable=<itertools.islice object>)
+    661             if pre_dispatch == "all" or n_jobs == 1:
+    662                 # The iterable was consumed all at once by the above for loop.
+    663                 # No need to wait for async callbacks to trigger to
+    664                 # consumption.
+    665                 self._iterating = False
+--> 666             self.retrieve()
+        self.retrieve = <bound method Parallel.retrieve of Parallel(n_jobs=-1)>
+    667             # Make sure that we get a last message telling us we are done
+    668             elapsed_time = time.time() - self._start_time
+    669             self._print('Done %3i out of %3i | elapsed: %s finished',
+    670                         (len(self._output),
+
+    ---------------------------------------------------------------------------
+    Sub-process traceback:
+    ---------------------------------------------------------------------------
+    ValueError                                         Sun May 10 20:37:27 2015
+PID: 11569                   Python 2.7.9: /home/akp258/anaconda/bin/python
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/cross_validation.pyc in _fit_and_score(estimator=Pipeline(steps=[('feature_reduction', LinearSVC(...B(alpha=1.0, class_prior=None, fit_prior=True))]), X=<2955x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 3, ..., 1, 1, 3]), scorer=make_scorer(accuracy_score), train=array([ 984,  985,  986, ..., 2952, 2953, 2954]), test=array([  0,   1,   2,   3,   4,   5,   6,   7,  ...75, 976, 977, 978, 979, 980, 981, 982, 983, 990]), verbose=1, parameters={'feature_reduction__C': 0.01}, fit_params={}, return_train_score=False, return_parameters=True, error_score='raise')
+   1454 
+   1455     try:
+   1456         if y_train is None:
+   1457             estimator.fit(X_train, **fit_params)
+   1458         else:
+-> 1459             estimator.fit(X_train, y_train, **fit_params)
+   1460 
+   1461     except Exception as e:
+   1462         if error_score == 'raise':
+   1463             raise
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/pipeline.pyc in fit(self=Pipeline(steps=[('feature_reduction', LinearSVC(...B(alpha=1.0, class_prior=None, fit_prior=True))]), X=<1970x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 1, ..., 1, 1, 3]), **fit_params={})
+    135             pipeline.
+    136         y : iterable, default=None
+    137             Training targets. Must fulfill label requirements for all steps of
+    138             the pipeline.
+    139         """
+--> 140         Xt, fit_params = self._pre_transform(X, y, **fit_params)
+    141         self.steps[-1][-1].fit(Xt, y, **fit_params)
+    142         return self
+    143 
+    144     def fit_transform(self, X, y=None, **fit_params):
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/pipeline.pyc in _pre_transform(self=Pipeline(steps=[('feature_reduction', LinearSVC(...B(alpha=1.0, class_prior=None, fit_prior=True))]), X=<1970x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 1, ..., 1, 1, 3]), **fit_params={})
+    116             step, param = pname.split('__', 1)
+    117             fit_params_steps[step][param] = pval
+    118         Xt = X
+    119         for name, transform in self.steps[:-1]:
+    120             if hasattr(transform, "fit_transform"):
+--> 121                 Xt = transform.fit_transform(Xt, y, **fit_params_steps[name])
+    122             else:
+    123                 Xt = transform.fit(Xt, y, **fit_params_steps[name]) \
+    124                               .transform(Xt)
+    125         return Xt, fit_params_steps[self.steps[-1][0]]
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/base.pyc in fit_transform(self=LinearSVC(C=0.01, class_weight=None, dual=False,...', random_state=None, tol=0.0001,
+     verbose=0), X=<1970x23534 sparse matrix of type '<type 'numpy.... stored elements in Compressed Sparse Row format>, y=array([1, 1, 1, ..., 1, 1, 3]), **fit_params={})
+    431         if y is None:
+    432             # fit method of arity 1 (unsupervised transformation)
+    433             return self.fit(X, **fit_params).transform(X)
+    434         else:
+    435             # fit method of arity 2 (supervised transformation)
+--> 436             return self.fit(X, y, **fit_params).transform(X)
+    437 
+    438 
+    439 ###############################################################################
+    440 class MetaEstimatorMixin(object):
+
+...........................................................................
+/home/akp258/anaconda/lib/python2.7/site-packages/sklearn/feature_selection/from_model.pyc in transform(self=LinearSVC(C=0.01, class_weight=None, dual=False,...', random_state=None, tol=0.0001,
+     verbose=0), X=<1970x23534 sparse matrix of type '<type 'numpy....ored elements in Compressed Sparse Column format>, threshold=1e-05)
+    108 
+    109         if np.any(mask):
+    110             mask = safe_mask(X, mask)
+    111             return X[:, mask]
+    112         else:
+--> 113             raise ValueError("Invalid threshold: all features are discarded.")
+    114 
+    115 
+    116 
+    117 
+
+ValueError: Invalid threshold: all features are discarded.
+___________________________________________________________________________
