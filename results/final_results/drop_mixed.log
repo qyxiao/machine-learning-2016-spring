@@ -1,0 +1,219 @@
+Experiment: 20150512-220703.min_required_count.100.all_features.accuracy
+Data parameters:
+  Number of opinion shards: 1340
+  Minimum required count: 100
+  Using TF-IDF: True
+Data loaded from /scratch/akp258/ml_output_data/feature_matrix.svmlight.shards.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/case_ids.shards.p.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/cases_df.shards.p.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/ngram_ids.shards.p.1340.mincount.100
+Total time spent building data: 16.3434200287
+Reading in ngram dictionary test_data/filtered_vocab_map.p.num_shards.508.cutoff.50
+Loading ngram dictionary with 45011 keys
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.220056056976
+	 	 pred
+true 	 	 1 	 3
+	 1 	 5651 	 0
+	 3 	 4108 	 0
+Percent Accuracy: 57.906%
+Training Accuracy 0.579055231069
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2154 	 0 	 0
+	 2 	 627 	 0 	 0
+	 3 	 1086 	 0 	 0
+Percent Accuracy: 55.702%
+Testing Accuracy 0.55702094647
+Log file doesn't exist.  Creating from scratch.
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.6s
+[Parallel(n_jobs=-1)]: Done   3 out of   3 | elapsed:    0.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {}
+best score from that estimator: 0.63418383031
+Label 0:
+  act
+  district
+  appel
+  defend
+  case
+  board
+  plaintiff
+  NOT FOUND
+  NOT FOUND
+  court
+Total time: 1.53278899193
+	 	 pred
+true 	 	 1 	 3
+	 1 	 4257 	 1394
+	 3 	 1495 	 2613
+Percent Accuracy: 70.397%
+Training Accuracy 0.703965570243
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1496 	 0 	 658
+	 2 	 329 	 0 	 298
+	 3 	 526 	 0 	 560
+Percent Accuracy: 53.168%
+Testing Accuracy 0.531678303595
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 1 candidates, totalling 3 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.7s
+[Parallel(n_jobs=-1)]: Done   3 out of   3 | elapsed:    1.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('classifier', BernoulliNB(alpha=1.0, binarize=0.01, class_prior=None, fit_prior=True))])
+best params: {}
+best score from that estimator: 0.628752945999
+Label 0:
+  NOT FOUND
+  cir
+  ed
+  act
+  ct
+  fact
+  district
+  NOT FOUND
+  case
+  court
+Total time: 1.73241710663
+	 	 pred
+true 	 	 1 	 3
+	 1 	 3594 	 2057
+	 3 	 1133 	 2975
+Percent Accuracy: 67.312%
+Training Accuracy 0.673122246132
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1341 	 0 	 813
+	 2 	 251 	 0 	 376
+	 3 	 400 	 0 	 686
+Percent Accuracy: 52.418%
+Testing Accuracy 0.524178950091
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 5 candidates, totalling 15 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.8s
+[Parallel(n_jobs=-1)]: Done   9 out of  15 | elapsed:    2.7s remaining:    1.8s
+[Parallel(n_jobs=-1)]: Done  15 out of  15 | elapsed:    5.2s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('classifier', LogisticRegression(C=1, class_weight=None, dual=True, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1}
+best score from that estimator: 0.64381596475
+Label 0:
+  NOT FOUND
+  decre
+  award
+  deduct
+  NOT FOUND
+  remedi
+  new trial
+  revers remand
+  revers
+  remand
+Total time: 6.30486702919
+	 	 pred
+true 	 	 1 	 3
+	 1 	 4924 	 727
+	 3 	 1312 	 2796
+Percent Accuracy: 79.106%
+Training Accuracy 0.791064658264
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1808 	 0 	 346
+	 2 	 457 	 0 	 170
+	 3 	 723 	 0 	 363
+Percent Accuracy: 56.142%
+Testing Accuracy 0.561417119214
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 5 candidates, totalling 15 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.0s
+[Parallel(n_jobs=-1)]: Done   9 out of  15 | elapsed:    2.9s remaining:    2.0s
+[Parallel(n_jobs=-1)]: Done  15 out of  15 | elapsed:   20.0s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('classifier', LinearSVC(C=0.1, class_weight=None, dual=True, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 0.1}
+best score from that estimator: 0.642996208628
+Label 0:
+  NOT FOUND
+  NOT FOUND
+  deduct
+  decre
+  award
+  remedi
+  new trial
+  revers remand
+  revers
+  remand
+Total time: 20.9044930935
+	 	 pred
+true 	 	 1 	 3
+	 1 	 4907 	 744
+	 3 	 1379 	 2729
+Percent Accuracy: 78.246%
+Training Accuracy 0.782457218977
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1817 	 0 	 337
+	 2 	 465 	 0 	 162
+	 3 	 725 	 0 	 361
+Percent Accuracy: 56.323%
+Testing Accuracy 0.563227307991
+Results saved to /scratch/akp258/ml_results/model_results.pkl.20150512-220703.min_required_count.100.all_features.accuracy.csv

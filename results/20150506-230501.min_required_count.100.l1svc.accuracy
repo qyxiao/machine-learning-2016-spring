@@ -1,0 +1,191 @@
+Experiment: 20150506-230501.min_required_count.100.l1svc.accuracy
+Data parameters:
+  Number of opinion shards: 1340
+  Minimum required count: 100
+  Using TF-IDF: True
+Data loaded from /scratch/akp258/ml_output_data/feature_matrix.svmlight.shards.1340.mincount.100.tfidf and /scratch/akp258/ml_output_data/case_ids.shards.p.1340.mincount.100.tfidf
+Total time spent building data: 10.735024929
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.0877668857574
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5651 	 0 	 0
+	 2 	 1840 	 0 	 0
+	 3 	 4108 	 0 	 0
+Percent Accuracy: 48.720%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2154 	 0 	 0
+	 2 	 627 	 0 	 0
+	 3 	 1086 	 0 	 0
+Percent Accuracy: 55.702%
+Log file doesn't exist.  Creating from scratch.
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 25 candidates, totalling 75 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.5s
+[Parallel(n_jobs=-1)]: Done  50 jobs       | elapsed:  1.0min
+[Parallel(n_jobs=-1)]: Done  75 out of  75 | elapsed:  3.5min finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', LinearSVC(C=100, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)), ('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__C': 100}
+best score from that estimator: 0.558668850763
+Total time: 292.61886096
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4810 	 126 	 715
+	 2 	 647 	 806 	 387
+	 3 	 1292 	 126 	 2690
+Percent Accuracy: 71.610%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1765 	 51 	 338
+	 2 	 410 	 73 	 144
+	 3 	 676 	 48 	 362
+Percent Accuracy: 56.892%
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 25 candidates, totalling 75 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.5s
+[Parallel(n_jobs=-1)]: Done  50 jobs       | elapsed:  1.1min
+[Parallel(n_jobs=-1)]: Done  75 out of  75 | elapsed:  3.9min finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', LinearSVC(C=10, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)), ('classifier', LinearSVC(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 0.1, 'feature_reduction__C': 10}
+best score from that estimator: 0.556427278214
+Total time: 296.152314901
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4778 	 125 	 748
+	 2 	 666 	 795 	 379
+	 3 	 1383 	 123 	 2602
+Percent Accuracy: 70.480%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1786 	 50 	 318
+	 2 	 412 	 72 	 143
+	 3 	 693 	 42 	 351
+Percent Accuracy: 57.124%
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 5 candidates, totalling 15 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.5s
+[Parallel(n_jobs=-1)]: Done   9 out of  15 | elapsed:   12.0s remaining:    8.0s
+[Parallel(n_jobs=-1)]: Done  15 out of  15 | elapsed:   53.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', LinearSVC(C=1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__C': 1}
+best score from that estimator: 0.538667126476
+Total time: 69.479681015
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4350 	 68 	 1233
+	 2 	 862 	 341 	 637
+	 3 	 1637 	 49 	 2422
+Percent Accuracy: 61.324%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1671 	 5 	 478
+	 2 	 407 	 22 	 198
+	 3 	 635 	 9 	 442
+Percent Accuracy: 55.211%
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 10 candidates, totalling 30 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.5s
+[Parallel(n_jobs=-1)]: Done  23 out of  30 | elapsed:   32.1s remaining:    9.8s
+[Parallel(n_jobs=-1)]: Done  30 out of  30 | elapsed:  1.4min finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', LinearSVC(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l1', random_state=None, tol=0.0001,
+     verbose=0)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.1, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.1, 'feature_reduction__C': 0.1}
+best score from that estimator: 0.536856625571
+Total time: 86.042098999
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 3823 	 504 	 1324
+	 2 	 695 	 741 	 404
+	 3 	 1724 	 401 	 1983
+Percent Accuracy: 56.445%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1615 	 144 	 395
+	 2 	 383 	 115 	 129
+	 3 	 643 	 96 	 347
+Percent Accuracy: 53.711%

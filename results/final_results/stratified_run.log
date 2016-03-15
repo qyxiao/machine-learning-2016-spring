@@ -1,0 +1,2511 @@
+Experiment: 20150511-000207.min_required_count.100.chi2.accuracy.stratify_by_geniss
+Data parameters:
+  Number of opinion shards: 1340
+  Minimum required count: 100
+  Using TF-IDF: True
+Data loaded from /scratch/akp258/ml_output_data/feature_matrix.svmlight.shards.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/case_ids.shards.p.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/cases_df.shards.p.1340.mincount.100.tfidf , /scratch/akp258/ml_output_data/ngram_ids.shards.p.1340.mincount.100
+Total time spent building data: 12.5218169689
+Reading in ngram dictionary test_data/filtered_vocab_map.p.num_shards.508.cutoff.50
+Loading ngram dictionary with 45011 keys
+
+
+Running models for stratum: geniss = 0.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00182104110718
+	 	 pred
+true 	 	 2
+	 2 	 96
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2
+	 1 	 0 	 1
+	 2 	 0 	 32
+Percent Accuracy: 96.970%
+Testing Accuracy 0.969696969697
+Log file doesn't exist.  Creating from scratch.
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there is only one class
+Total time: 0.00110507011414
+	 	 pred
+true 	 	 2
+	 2 	 96
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2
+	 1 	 0 	 1
+	 2 	 0 	 32
+Percent Accuracy: 96.970%
+Testing Accuracy 0.969696969697
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there is only one class
+Total time: 0.00132608413696
+	 	 pred
+true 	 	 2
+	 2 	 96
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2
+	 1 	 0 	 1
+	 2 	 0 	 32
+Percent Accuracy: 96.970%
+Testing Accuracy 0.969696969697
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there is only one class
+Total time: 0.00130605697632
+	 	 pred
+true 	 	 2
+	 2 	 96
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2
+	 1 	 0 	 1
+	 2 	 0 	 32
+Percent Accuracy: 96.970%
+Testing Accuracy 0.969696969697
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 129
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there is only one class
+Total time: 0.00137305259705
+	 	 pred
+true 	 	 2
+	 2 	 96
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2
+	 1 	 0 	 1
+	 2 	 0 	 32
+Percent Accuracy: 96.970%
+Testing Accuracy 0.969696969697
+
+
+Running models for stratum: geniss = 1.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.0216610431671
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2400 	 0 	 0
+	 2 	 168 	 0 	 0
+	 3 	 555 	 0 	 0
+Percent Accuracy: 76.849%
+Training Accuracy 0.768491834774
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 780 	 0 	 0
+	 2 	 92 	 0 	 0
+	 3 	 169 	 0 	 0
+Percent Accuracy: 74.928%
+Testing Accuracy 0.749279538905
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.2s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    1.0s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.768491834774
+Label 0:
+  reason support
+  purchas price
+  insolv
+  refere order
+  NOT FOUND
+  decre affirm
+  satisfi
+  compani time
+  real estat
+  prefer
+Label 1:
+  compani time
+  possess properti
+  insolv
+  price
+  reason support
+  award
+  NOT FOUND
+  refere order
+  satisfi
+  prefer
+Label 2:
+  decre affirm
+  refere order
+  return
+  NOT FOUND
+  satisfi
+  plan reorgan
+  insolv
+  award
+  prefer
+  real estat
+Total time: 1.26579713821
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2400 	 0 	 0
+	 2 	 168 	 0 	 0
+	 3 	 555 	 0 	 0
+Percent Accuracy: 76.849%
+Training Accuracy 0.768491834774
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 780 	 0 	 0
+	 2 	 92 	 0 	 0
+	 3 	 169 	 0 	 0
+Percent Accuracy: 74.928%
+Testing Accuracy 0.749279538905
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.2s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    1.0s remaining:    1.2s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    1.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.01, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.01, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.804354787064
+Label 0:
+  price
+  NOT FOUND
+  continu oper
+  purchas price
+  real estat
+  satisfi
+  insolv
+  decre affirm
+  prefer
+  compani time
+Label 1:
+  cours
+  plan reorgan
+  NOT FOUND
+  NOT FOUND
+  price
+  compani time
+  satisfi
+  insolv
+  award
+  prefer
+Label 2:
+  satisfi
+  compani time
+  decre affirm
+  litig
+  real estat
+  return
+  plan reorgan
+  prefer
+  award
+  insolv
+Total time: 2.18959879875
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2230 	 56 	 114
+	 2 	 55 	 83 	 30
+	 3 	 185 	 24 	 346
+Percent Accuracy: 85.142%
+Training Accuracy 0.851424911944
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 652 	 98 	 30
+	 2 	 32 	 52 	 8
+	 3 	 78 	 48 	 43
+Percent Accuracy: 71.758%
+Testing Accuracy 0.71757925072
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.2s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    2.0s remaining:    3.5s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    5.4s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=100, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 100, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.798591098303
+Label 0:
+  connect
+  offer
+  disclos record
+  prove
+  continu oper
+  assent
+  ordinari
+  purchas price
+  decre affirm
+  compani time
+Label 1:
+  conduct
+  compani appel
+  plan
+  judg
+  analog case
+  corpor act
+  award
+  counter
+  obtain
+  director
+Label 2:
+  lost
+  issu
+  author
+  litig
+  book
+  merchandis
+  insolv
+  NOT FOUND
+  award
+  return
+Total time: 5.64604902267
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2348 	 3 	 49
+	 2 	 76 	 76 	 16
+	 3 	 249 	 5 	 301
+Percent Accuracy: 87.256%
+Training Accuracy 0.8725584374
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 735 	 15 	 30
+	 2 	 73 	 8 	 11
+	 3 	 126 	 8 	 35
+Percent Accuracy: 74.736%
+Testing Accuracy 0.747358309318
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 4164
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.2s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    2.2s remaining:    3.8s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    9.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=10, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 10, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.795709253923
+Label 0:
+  compani
+  offer
+  continu oper
+  connect
+  prove
+  purchas price
+  decre affirm
+  assent
+  ordinari
+  compani time
+Label 1:
+  judg
+  oral argument
+  controversi
+  said
+  obtain
+  compani appel
+  NOT FOUND
+  milwauke
+  corpor act
+  director
+Label 2:
+  lost
+  litig
+  issu
+  author
+  insolv
+  merchandis
+  book
+  award
+  NOT FOUND
+  return
+Total time: 10.136590004
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2348 	 2 	 50
+	 2 	 79 	 72 	 17
+	 3 	 260 	 4 	 291
+Percent Accuracy: 86.808%
+Training Accuracy 0.868075568364
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 739 	 11 	 30
+	 2 	 73 	 6 	 13
+	 3 	 129 	 6 	 34
+Percent Accuracy: 74.832%
+Testing Accuracy 0.748318924111
+
+
+Running models for stratum: geniss = 2.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 1308
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00615501403809
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 559 	 0 	 0
+	 2 	 90 	 0 	 0
+	 3 	 332 	 0 	 0
+Percent Accuracy: 56.983%
+Training Accuracy 0.569826707441
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 172 	 0 	 0
+	 2 	 41 	 0 	 0
+	 3 	 114 	 0 	 0
+Percent Accuracy: 52.599%
+Testing Accuracy 0.525993883792
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 1308
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    0.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.6, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.6}
+best score from that estimator: 0.577981651376
+Label 0:
+  prefer
+  ordinari
+  issu appel
+  NOT FOUND
+  repay
+  NOT FOUND
+  NOT FOUND
+  hopeless
+  gentlemen
+  dealt
+Label 1:
+  NOT FOUND
+  appeal district
+  NOT FOUND
+  real estat
+  issu appel
+  ordinari
+  NOT FOUND
+  petition
+  known
+  NOT FOUND
+Label 2:
+  loss
+  reclam
+  known
+  mortgag properti
+  NOT FOUND
+  dealt
+  assert
+  issu appel
+  NOT FOUND
+  appeal district
+Total time: 0.48829293251
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 559 	 0 	 0
+	 2 	 89 	 0 	 1
+	 3 	 306 	 0 	 26
+Percent Accuracy: 59.633%
+Training Accuracy 0.596330275229
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 172 	 0 	 0
+	 2 	 41 	 0 	 0
+	 3 	 113 	 0 	 1
+Percent Accuracy: 52.905%
+Testing Accuracy 0.529051987768
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 1308
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    0.4s remaining:    0.4s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    0.7s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.01, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.01, 'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.593272171254
+Label 0:
+  plan reorgan
+  adjud
+  purchas price
+  return
+  NOT FOUND
+  reliev
+  case
+  justifi
+  appear
+  bankruptci
+Label 1:
+  purchas price
+  case
+  plan reorgan
+  NOT FOUND
+  adjud
+  reliev
+  NOT FOUND
+  justifi
+  appear
+  bankruptci
+Label 2:
+  return
+  adjud
+  plan reorgan
+  reliev
+  divis
+  NOT FOUND
+  NOT FOUND
+  justifi
+  appear
+  bankruptci
+Total time: 0.892125844955
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 487 	 20 	 52
+	 2 	 13 	 61 	 16
+	 3 	 96 	 19 	 217
+Percent Accuracy: 77.982%
+Training Accuracy 0.779816513761
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 124 	 20 	 28
+	 2 	 18 	 7 	 16
+	 3 	 52 	 18 	 44
+Percent Accuracy: 53.517%
+Testing Accuracy 0.535168195719
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 1308
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.7s remaining:    1.2s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    1.8s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.605504587156
+Label 0:
+  congress intend
+  NOT FOUND
+  hopeless
+  note case
+  raw
+  indicia
+  petroleum
+  diego
+  NOT FOUND
+  obvious
+Label 1:
+  parti hereto
+  case bar
+  credit
+  plaintiff
+  court person
+  refer section
+  question
+  case purpos
+  mr brown
+  power confer
+Label 2:
+  claus constitut
+  shannon
+  rule procedur
+  order enter
+  NOT FOUND
+  pursu
+  NOT FOUND
+  NOT FOUND
+  congress pass
+  NOT FOUND
+Total time: 2.10440802574
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 554 	 0 	 5
+	 2 	 76 	 0 	 14
+	 3 	 146 	 0 	 186
+Percent Accuracy: 75.433%
+Training Accuracy 0.754332313965
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 166 	 0 	 6
+	 2 	 38 	 0 	 3
+	 3 	 104 	 0 	 10
+Percent Accuracy: 53.823%
+Testing Accuracy 0.538226299694
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 1308
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.8s remaining:    1.3s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    4.5s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.6, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=100, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 100, 'feature_reduction__alpha': 0.6}
+best score from that estimator: 0.606523955148
+Label 0:
+  satisfactori
+  said
+  cours
+  analog case
+  establish
+  NOT FOUND
+  mention
+  approach
+  outstand
+  prefer
+Label 1:
+  order
+  NOT FOUND
+  asset
+  lost
+  estop
+  NOT FOUND
+  refer
+  NOT FOUND
+  knowledg consent
+  consist
+Label 2:
+  permit
+  return
+  appear
+  file
+  evid
+  mortgag properti
+  possess properti
+  reliev
+  did
+  conclus
+Total time: 4.79636907578
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 519 	 0 	 40
+	 2 	 9 	 73 	 8
+	 3 	 108 	 1 	 223
+Percent Accuracy: 83.078%
+Training Accuracy 0.830784913354
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 141 	 5 	 26
+	 2 	 30 	 4 	 7
+	 3 	 71 	 2 	 41
+Percent Accuracy: 56.881%
+Testing Accuracy 0.56880733945
+
+
+Running models for stratum: geniss = 3.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 186
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00174808502197
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 53
+	 2 	 0 	 0 	 16
+	 3 	 0 	 0 	 70
+Percent Accuracy: 50.360%
+Training Accuracy 0.503597122302
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 28
+	 2 	 0 	 0 	 3
+	 3 	 0 	 0 	 16
+Percent Accuracy: 34.043%
+Testing Accuracy 0.340425531915
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 186
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    0.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.517985611511
+Label 0:
+  let
+  reclam
+  commiss
+  NOT FOUND
+  bankruptci
+  indebted
+  secur creditor
+  plan reorgan
+  conclud
+  ordinari
+Label 1:
+  gentlemen
+  connect
+  indebted
+  award
+  reliev
+  seek relief
+  answer
+  ed
+  NOT FOUND
+  establish
+Label 2:
+  NOT FOUND
+  ed
+  claim bankruptci
+  dealt
+  plan reorgan
+  conclud
+  NOT FOUND
+  instead
+  mortgag properti
+  secur creditor
+Total time: 0.237277984619
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 21 	 0 	 32
+	 2 	 0 	 0 	 16
+	 3 	 0 	 0 	 70
+Percent Accuracy: 65.468%
+Training Accuracy 0.654676258993
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1 	 0 	 27
+	 2 	 0 	 0 	 3
+	 3 	 0 	 0 	 16
+Percent Accuracy: 36.170%
+Testing Accuracy 0.36170212766
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 186
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    0.1s remaining:    0.1s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    0.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.01, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.01, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.525179856115
+Label 0:
+  case
+  prefer
+  purchas price
+  price
+  compani time
+  credit
+  reclam
+  mention
+  NOT FOUND
+  real estat
+Label 1:
+  mortgag properti
+  case
+  prefer
+  purchas price
+  price
+  compani time
+  mention
+  reclam
+  real estat
+  NOT FOUND
+Label 2:
+  mortgag properti
+  case
+  purchas price
+  price
+  compani time
+  prefer
+  NOT FOUND
+  reclam
+  mention
+  real estat
+Total time: 0.359966993332
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 11 	 0 	 42
+	 2 	 5 	 4 	 7
+	 3 	 5 	 0 	 65
+Percent Accuracy: 57.554%
+Training Accuracy 0.575539568345
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 23
+	 2 	 0 	 0 	 3
+	 3 	 1 	 1 	 14
+Percent Accuracy: 40.426%
+Testing Accuracy 0.404255319149
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 186
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.2s remaining:    0.3s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=10, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 10, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.532374100719
+Label 0:
+  result use
+  NOT FOUND
+  NOT FOUND
+  pari
+  distributor
+  answer
+  clerk court
+  actuat
+  argu rule
+  issu case
+Label 1:
+  larg
+  point district
+  NOT FOUND
+  NOT FOUND
+  accord plaintiff
+  proceed feder
+  appel enter
+  remain count
+  NOT FOUND
+  evid reli
+Label 2:
+  amend claim
+  check
+  bank employe
+  profit
+  japanes
+  NOT FOUND
+  case remand
+  NOT FOUND
+  evid juri
+  eye
+Total time: 0.60417509079
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 53 	 0 	 0
+	 2 	 0 	 16 	 0
+	 3 	 0 	 0 	 70
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 7 	 0 	 21
+	 2 	 0 	 0 	 3
+	 3 	 2 	 0 	 14
+Percent Accuracy: 44.681%
+Testing Accuracy 0.446808510638
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 186
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.2s remaining:    0.3s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.5s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.532374100719
+Label 0:
+  NOT FOUND
+  NOT FOUND
+  result use
+  pari
+  distributor
+  answer
+  clerk court
+  argu rule
+  actuat
+  issu case
+Label 1:
+  claim deni
+  point district
+  NOT FOUND
+  NOT FOUND
+  proceed feder
+  accord plaintiff
+  appel enter
+  remain count
+  NOT FOUND
+  evid reli
+Label 2:
+  district court affirm
+  bank employe
+  check
+  profit
+  japanes
+  NOT FOUND
+  case remand
+  NOT FOUND
+  evid juri
+  eye
+Total time: 0.788722038269
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 53 	 0 	 0
+	 2 	 0 	 16 	 0
+	 3 	 0 	 0 	 70
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 8 	 0 	 20
+	 2 	 0 	 0 	 3
+	 3 	 2 	 0 	 14
+Percent Accuracy: 46.809%
+Testing Accuracy 0.468085106383
+
+
+Running models for stratum: geniss = 4.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 167
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00174403190613
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 83 	 0 	 0
+	 2 	 9 	 0 	 0
+	 3 	 33 	 0 	 0
+Percent Accuracy: 66.400%
+Training Accuracy 0.664
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 28 	 0 	 0
+	 2 	 6 	 0 	 0
+	 3 	 8 	 0 	 0
+Percent Accuracy: 66.667%
+Testing Accuracy 0.666666666667
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 167
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    0.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.664
+Label 0:
+  NOT FOUND
+  prefer
+  reclam
+  insolv
+  purchas price
+  return
+  price
+  case
+  continu oper
+  mention
+Label 1:
+  insolv
+  real estat
+  award
+  NOT FOUND
+  reclam
+  continu oper
+  NOT FOUND
+  mention
+  price
+  case
+Label 2:
+  prefer
+  compani time
+  reclam
+  continu oper
+  mortgag properti
+  NOT FOUND
+  mention
+  purchas price
+  price
+  NOT FOUND
+Total time: 0.272514104843
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 83 	 0 	 0
+	 2 	 9 	 0 	 0
+	 3 	 33 	 0 	 0
+Percent Accuracy: 66.400%
+Training Accuracy 0.664
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 28 	 0 	 0
+	 2 	 6 	 0 	 0
+	 3 	 8 	 0 	 0
+Percent Accuracy: 66.667%
+Testing Accuracy 0.666666666667
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 167
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    0.1s remaining:    0.1s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    0.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.01, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.01, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.672
+Label 0:
+  NOT FOUND
+  purchas price
+  price
+  return
+  reclam
+  prefer
+  insolv
+  mention
+  case
+  continu oper
+Label 1:
+  insolv
+  prefer
+  purchas price
+  price
+  compani time
+  NOT FOUND
+  reclam
+  mention
+  NOT FOUND
+  continu oper
+Label 2:
+  insolv
+  prefer
+  compani time
+  reclam
+  price
+  NOT FOUND
+  mortgag properti
+  NOT FOUND
+  purchas price
+  mention
+Total time: 0.271447896957
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 82 	 0 	 1
+	 2 	 4 	 2 	 3
+	 3 	 28 	 0 	 5
+Percent Accuracy: 71.200%
+Training Accuracy 0.712
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 27 	 0 	 1
+	 2 	 6 	 0 	 0
+	 3 	 8 	 0 	 0
+Percent Accuracy: 64.286%
+Testing Accuracy 0.642857142857
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 167
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.1s remaining:    0.2s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=0.01, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 0.01, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.664
+Label 0:
+  insolv
+  credit
+  purchas price
+  prefer
+  compani time
+  mortgag properti
+  loss
+  return
+  bankruptci
+  mention
+Label 1:
+  prefer
+  credit
+  insolv
+  continu oper
+  real estat
+  award
+  reclam
+  NOT FOUND
+  price
+  case
+Label 2:
+  insolv
+  prefer
+  return
+  purchas price
+  credit
+  compani time
+  loss
+  bankruptci
+  mortgag properti
+  NOT FOUND
+Total time: 0.449904918671
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 83 	 0 	 0
+	 2 	 9 	 0 	 0
+	 3 	 33 	 0 	 0
+Percent Accuracy: 66.400%
+Training Accuracy 0.664
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 28 	 0 	 0
+	 2 	 6 	 0 	 0
+	 3 	 8 	 0 	 0
+Percent Accuracy: 66.667%
+Testing Accuracy 0.666666666667
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 167
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.1s remaining:    0.2s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.6s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.672
+Label 0:
+  count charg
+  district illinoi
+  NOT FOUND
+  act conspiraci
+  agent testifi
+  life insur compani
+  NOT FOUND
+  long time
+  pena
+  option
+Label 1:
+  cessat
+  bound
+  doubt
+  person make
+  appeal
+  prior date
+  establish
+  pad
+  contract purchas
+  forestal
+Label 2:
+  prejudici
+  rule plaintiff
+  file district court
+  contract did
+  charg possess
+  prior entri
+  execut search
+  ruth
+  NOT FOUND
+  secondari mean
+Total time: 0.803337812424
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 83 	 0 	 0
+	 2 	 0 	 9 	 0
+	 3 	 0 	 0 	 33
+Percent Accuracy: 100.000%
+Training Accuracy 1.0
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 28 	 0 	 0
+	 2 	 6 	 0 	 0
+	 3 	 8 	 0 	 0
+Percent Accuracy: 66.667%
+Testing Accuracy 0.666666666667
+
+
+Running models for stratum: geniss = 5.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 31
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00118684768677
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 14 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 7 	 0 	 0
+Percent Accuracy: 60.870%
+Training Accuracy 0.608695652174
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 1 	 0 	 0
+Percent Accuracy: 62.500%
+Testing Accuracy 0.625
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 31
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there are only 23 training samples, which is fewer than the minimum of 30
+Total time: 0.00153994560242
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 14 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 7 	 0 	 0
+Percent Accuracy: 60.870%
+Training Accuracy 0.608695652174
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 1 	 0 	 0
+Percent Accuracy: 62.500%
+Testing Accuracy 0.625
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 31
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there are only 23 training samples, which is fewer than the minimum of 30
+Total time: 0.00152921676636
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 14 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 7 	 0 	 0
+Percent Accuracy: 60.870%
+Training Accuracy 0.608695652174
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 1 	 0 	 0
+Percent Accuracy: 62.500%
+Testing Accuracy 0.625
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 31
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there are only 23 training samples, which is fewer than the minimum of 30
+Total time: 0.00152707099915
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 14 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 7 	 0 	 0
+Percent Accuracy: 60.870%
+Training Accuracy 0.608695652174
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 1 	 0 	 0
+Percent Accuracy: 62.500%
+Testing Accuracy 0.625
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 31
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Resorting to baseline classifier, because there are only 23 training samples, which is fewer than the minimum of 30
+Total time: 0.00152897834778
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 14 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 7 	 0 	 0
+Percent Accuracy: 60.870%
+Training Accuracy 0.608695652174
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5 	 0 	 0
+	 2 	 2 	 0 	 0
+	 3 	 1 	 0 	 0
+Percent Accuracy: 62.500%
+Testing Accuracy 0.625
+
+
+Running models for stratum: geniss = 6.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 1105
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.0042769908905
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 268
+	 2 	 0 	 0 	 100
+	 3 	 0 	 0 	 460
+Percent Accuracy: 55.556%
+Training Accuracy 0.555555555556
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 121
+	 2 	 0 	 0 	 38
+	 3 	 0 	 0 	 118
+Percent Accuracy: 42.599%
+Testing Accuracy 0.425992779783
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 1105
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    0.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.555555555556
+Label 0:
+  price
+  ed
+  litig
+  prefer
+  appear
+  dealt
+  return
+  reclam
+  decre affirm
+  real estat
+Label 1:
+  litig
+  appear
+  purchas price
+  continu oper
+  justifi
+  satisfi
+  dealt
+  NOT FOUND
+  decre affirm
+  real estat
+Label 2:
+  properti subject
+  gentlemen
+  award
+  continu oper
+  litig
+  prefer
+  reclam
+  conclus
+  decre affirm
+  real estat
+Total time: 0.52392411232
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 268
+	 2 	 0 	 0 	 100
+	 3 	 0 	 0 	 460
+Percent Accuracy: 55.556%
+Training Accuracy 0.555555555556
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 121
+	 2 	 0 	 0 	 38
+	 3 	 0 	 0 	 118
+Percent Accuracy: 42.599%
+Testing Accuracy 0.425992779783
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 1105
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    0.3s remaining:    0.3s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    0.5s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.1, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.555555555556
+Label 0:
+  commerc
+  envelop
+  qualifi
+  hopeless
+  rule circuit
+  public
+  revis code
+  motor
+  NOT FOUND
+  broaden
+Label 1:
+  rule circuit
+  qualifi
+  reason possibl
+  jurisprud
+  hopeless
+  revis code
+  public
+  motor
+  NOT FOUND
+  broaden
+Label 2:
+  med
+  reason possibl
+  ca
+  qualifi
+  hopeless
+  revis code
+  public
+  motor
+  broaden
+  NOT FOUND
+Total time: 0.727286100388
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 3 	 0 	 265
+	 2 	 0 	 0 	 100
+	 3 	 0 	 0 	 460
+Percent Accuracy: 55.918%
+Training Accuracy 0.559178743961
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 121
+	 2 	 0 	 0 	 38
+	 3 	 0 	 0 	 118
+Percent Accuracy: 42.599%
+Testing Accuracy 0.425992779783
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 1105
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.5s remaining:    0.9s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    1.3s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.4, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=0.01, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 0.01, 'feature_reduction__alpha': 0.4}
+best score from that estimator: 0.555555555556
+Label 0:
+  ed
+  bankruptci
+  mortgag properti
+  price
+  appear
+  decre affirm
+  dealt
+  return
+  reclam
+  real estat
+Label 1:
+  ordinari
+  litig
+  known
+  assent
+  dealt
+  continu oper
+  justifi
+  purchas price
+  satisfi
+  NOT FOUND
+Label 2:
+  mortgag properti
+  case
+  compani time
+  content
+  asset
+  properti subject
+  plan reorgan
+  award
+  bankruptci
+  conclus
+Total time: 1.53858208656
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 268
+	 2 	 0 	 0 	 100
+	 3 	 0 	 0 	 460
+Percent Accuracy: 55.556%
+Training Accuracy 0.555555555556
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 121
+	 2 	 0 	 0 	 38
+	 3 	 0 	 0 	 118
+Percent Accuracy: 42.599%
+Testing Accuracy 0.425992779783
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 1105
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.1s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.6s remaining:    1.0s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    3.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 0.1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.557971014493
+Label 0:
+  director
+  NOT FOUND
+  NOT FOUND
+  imprison impos
+  NOT FOUND
+  rule circuit
+  did inform
+  label
+  materia
+  envelop
+Label 1:
+  action plan
+  secret servic
+  damag caus
+  file lawsuit
+  act includ
+  NOT FOUND
+  guilti neglig
+  apparatus
+  arbitr agreement
+  motor
+Label 2:
+  merchandis
+  prejudic defend
+  order preserv
+  convers
+  appeal judgment enter
+  estop
+  jurisdict court
+  fals swear
+  reason possibl
+  ct ed petition
+Total time: 3.48089790344
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 112 	 0 	 156
+	 2 	 6 	 0 	 94
+	 3 	 3 	 0 	 457
+Percent Accuracy: 68.720%
+Training Accuracy 0.687198067633
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1 	 0 	 120
+	 2 	 4 	 0 	 34
+	 3 	 9 	 0 	 109
+Percent Accuracy: 39.711%
+Testing Accuracy 0.397111913357
+
+
+Running models for stratum: geniss = 7.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 7941
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.0381178855896
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 2321
+	 2 	 0 	 0 	 1173
+	 3 	 0 	 0 	 2461
+Percent Accuracy: 41.327%
+Training Accuracy 0.413266162888
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 842
+	 2 	 0 	 0 	 461
+	 3 	 0 	 0 	 683
+Percent Accuracy: 34.391%
+Testing Accuracy 0.34390735146
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 7941
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.4s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    1.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.47220822838
+Label 0:
+  plan reorgan
+  properti subject
+  act
+  shall requir
+  assum
+  controversi
+  creditor
+  seek relief
+  answer
+  held
+Label 1:
+  creditor
+  later
+  plan reorgan
+  general manag
+  controversi
+  assum
+  properti subject
+  NOT FOUND
+  answer
+  held
+Label 2:
+  creditor
+  month month
+  instead
+  controversi
+  properti subject
+  assum
+  exact
+  answer
+  act
+  held
+Total time: 2.24722909927
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1599 	 51 	 671
+	 2 	 477 	 393 	 303
+	 3 	 791 	 54 	 1616
+Percent Accuracy: 60.588%
+Training Accuracy 0.605877413938
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 453 	 28 	 361
+	 2 	 263 	 63 	 135
+	 3 	 269 	 18 	 396
+Percent Accuracy: 45.921%
+Testing Accuracy 0.459214501511
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 7941
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.4s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    1.8s remaining:    2.2s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    3.6s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.6, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.1, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.1, 'feature_reduction__alpha': 0.6}
+best score from that estimator: 0.487153652393
+Label 0:
+  loss
+  price
+  mention
+  milwauke
+  ed
+  gentlemen
+  compani enter
+  fixtur
+  save
+  evid support conclus
+Label 1:
+  judg
+  refere order
+  dealt
+  loss
+  ed
+  compani enter
+  mention
+  gentlemen
+  offer
+  evid support conclus
+Label 2:
+  compani enter
+  search
+  freeli
+  insolv
+  gentlemen
+  loss
+  reliev
+  comp
+  evid support conclus
+  fixtur
+Total time: 3.95878601074
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1497 	 340 	 484
+	 2 	 274 	 735 	 164
+	 3 	 928 	 314 	 1219
+Percent Accuracy: 57.951%
+Training Accuracy 0.579513014274
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 463 	 143 	 236
+	 2 	 219 	 178 	 64
+	 3 	 311 	 117 	 255
+Percent Accuracy: 45.116%
+Testing Accuracy 0.451158106747
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 7941
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.4s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    3.8s remaining:    6.6s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:   11.4s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.505793450882
+Label 0:
+  lowest
+  govern
+  refere
+  case
+  month
+  gravamen
+  NOT FOUND
+  plaintiff
+  dividend
+  infring patent
+Label 1:
+  lower court
+  larg
+  pray
+  curiam
+  bank
+  citi new
+  commit
+  compani
+  NOT FOUND
+  commission intern
+Label 2:
+  recurr
+  defend
+  claim titl
+  dismiss prejudic
+  ag
+  orr
+  injur parti
+  matter law
+  juri
+  petition
+Total time: 14.3798890114
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1784 	 92 	 445
+	 2 	 221 	 721 	 231
+	 3 	 365 	 100 	 1996
+Percent Accuracy: 75.584%
+Training Accuracy 0.75583543241
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 400 	 75 	 367
+	 2 	 173 	 139 	 149
+	 3 	 209 	 66 	 408
+Percent Accuracy: 47.684%
+Testing Accuracy 0.476837865055
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 7941
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.4s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    4.3s remaining:    7.5s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:   28.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 0.1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.506801007557
+Label 0:
+  lowest
+  govern
+  convict state
+  month
+  gravamen
+  refere
+  dividend
+  plaintiff
+  NOT FOUND
+  infring patent
+Label 1:
+  pray
+  earlier
+  curiam
+  larg
+  bank
+  compani
+  commit
+  citi new
+  NOT FOUND
+  commission intern
+Label 2:
+  act
+  dismiss prejudic
+  recurr
+  injur parti
+  ag
+  law practic
+  orr
+  matter law
+  juri
+  petition
+Total time: 30.3209969997
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1760 	 96 	 465
+	 2 	 217 	 736 	 220
+	 3 	 381 	 106 	 1974
+Percent Accuracy: 75.063%
+Training Accuracy 0.750629722922
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 399 	 75 	 368
+	 2 	 175 	 141 	 145
+	 3 	 209 	 69 	 405
+Percent Accuracy: 47.583%
+Testing Accuracy 0.47583081571
+
+
+Running models for stratum: geniss = 8.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 1
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 1
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 1
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 1
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 1
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+
+Running models for stratum: geniss = 9.0
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 425
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.00218415260315
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 89
+	 2 	 0 	 0 	 103
+	 3 	 0 	 0 	 126
+Percent Accuracy: 39.623%
+Training Accuracy 0.396226415094
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 0 	 40
+	 2 	 0 	 0 	 26
+	 3 	 0 	 0 	 41
+Percent Accuracy: 38.318%
+Testing Accuracy 0.383177570093
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 425
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    0.1s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.471698113208
+Label 0:
+  novemb
+  got
+  burden prove
+  price
+  control
+  NOT FOUND
+  appeal district
+  gentlemen
+  NOT FOUND
+  return
+Label 1:
+  ask
+  NOT FOUND
+  insolv
+  gentlemen
+  NOT FOUND
+  plan reorgan
+  credit
+  satisfi
+  return
+  issu appel
+Label 2:
+  appeal district
+  offic director
+  burden prove
+  later
+  NOT FOUND
+  gentlemen
+  NOT FOUND
+  control
+  NOT FOUND
+  return
+Total time: 0.405174970627
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 22 	 4 	 63
+	 2 	 0 	 73 	 30
+	 3 	 0 	 3 	 123
+Percent Accuracy: 68.553%
+Training Accuracy 0.685534591195
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 0 	 1 	 39
+	 2 	 1 	 3 	 22
+	 3 	 1 	 3 	 37
+Percent Accuracy: 37.383%
+Testing Accuracy 0.373831775701
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 425
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  11 out of  24 | elapsed:    0.1s remaining:    0.1s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    0.2s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.1, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.1, 'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.51572327044
+Label 0:
+  burden prove
+  control
+  satisfi
+  price
+  got
+  NOT FOUND
+  appeal district
+  gentlemen
+  NOT FOUND
+  return
+Label 1:
+  aggreg
+  gentlemen
+  ask
+  NOT FOUND
+  insolv
+  plan reorgan
+  credit
+  satisfi
+  return
+  issu appel
+Label 2:
+  burden prove
+  protect amend
+  brief
+  gentlemen
+  appeal district
+  NOT FOUND
+  control
+  NOT FOUND
+  NOT FOUND
+  return
+Total time: 0.386408090591
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 47 	 14 	 28
+	 2 	 1 	 96 	 6
+	 3 	 2 	 10 	 114
+Percent Accuracy: 80.818%
+Training Accuracy 0.808176100629
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2 	 17 	 21
+	 2 	 1 	 17 	 8
+	 3 	 2 	 13 	 26
+Percent Accuracy: 42.056%
+Testing Accuracy 0.420560747664
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 425
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.2s remaining:    0.4s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.4s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.528301886792
+Label 0:
+  NOT FOUND
+  live
+  drawer
+  said plaintiff
+  parti seek
+  NOT FOUND
+  clerk court
+  petition seek
+  decis question
+  piec
+Label 1:
+  instruct proper
+  guidanc
+  corpor entiti
+  certain real
+  servic
+  set forth
+  imprison
+  NOT FOUND
+  bankrupt
+  NOT FOUND
+Label 2:
+  rang
+  employ
+  juri reason
+  NOT FOUND
+  new trial
+  bankruptci truste
+  respect
+  NOT FOUND
+  confront
+  court deni
+Total time: 0.729676008224
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 67 	 1 	 21
+	 2 	 0 	 100 	 3
+	 3 	 0 	 5 	 121
+Percent Accuracy: 90.566%
+Training Accuracy 0.905660377358
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1 	 17 	 22
+	 2 	 1 	 15 	 10
+	 3 	 3 	 15 	 23
+Percent Accuracy: 36.449%
+Testing Accuracy 0.364485981308
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 425
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    0.0s
+[Parallel(n_jobs=-1)]: Done  22 out of  60 | elapsed:    0.2s remaining:    0.3s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:    0.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b983a1a41b8>)), ('classifier', LinearSVC(C=10, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 10, 'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.528301886792
+Label 0:
+  NOT FOUND
+  common
+  disclos record
+  alleg
+  berri
+  case assum
+  NOT FOUND
+  railway
+  got
+  ordinari
+Label 1:
+  set forth
+  NOT FOUND
+  ct
+  mortgag properti
+  illeg search
+  NOT FOUND
+  credit
+  record present
+  hopeless
+  NOT FOUND
+Label 2:
+  agent
+  indic
+  case
+  ct ed general
+  briefli
+  NOT FOUND
+  assert
+  NOT FOUND
+  district judg
+  articl
+Total time: 1.13554596901
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 87 	 1 	 1
+	 2 	 0 	 103 	 0
+	 3 	 1 	 3 	 122
+Percent Accuracy: 98.113%
+Training Accuracy 0.981132075472
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 9 	 12 	 19
+	 2 	 5 	 15 	 6
+	 3 	 12 	 11 	 18
+Percent Accuracy: 39.252%
+Testing Accuracy 0.392523364486
+
+
+Running models for stratum: geniss = nan
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 0
+  Number of features 23534
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 0
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 0
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 0
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 0
+  Number of features 23534
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Failed to build model. There are only 0 training samples, which is fewer than the minimum of 4
+Stratified model results saved to /scratch/akp258/ml_results/model_results.pkl.20150511-000207.min_required_count.100.chi2.accuracy.stratify_by_geniss.csv

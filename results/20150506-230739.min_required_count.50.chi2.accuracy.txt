@@ -1,0 +1,176 @@
+Experiment: 20150506-230739.min_required_count.50.chi2.accuracy
+Data parameters:
+  Number of opinion shards: 1340
+  Minimum required count: 50
+  Using TF-IDF: True
+Data loaded from /scratch/akp258/ml_output_data/feature_matrix.svmlight.shards.1340.mincount.50.tfidf and /scratch/akp258/ml_output_data/case_ids.shards.p.1340.mincount.50.tfidf
+Total time spent building data: 17.3993651867
+Training and scoring models...
+
+Fitting New Model
+Model: baseline
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 52923
+Training percentage 0.75
+Scoring used: None
+Splitting data into training and testing...
+Total time: 0.107860088348
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 5651 	 0 	 0
+	 2 	 1840 	 0 	 0
+	 3 	 4108 	 0 	 0
+Percent Accuracy: 48.720%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 2154 	 0 	 0
+	 2 	 627 	 0 	 0
+	 3 	 1086 	 0 	 0
+Percent Accuracy: 55.702%
+
+Fitting New Model
+Model: logistic
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 52923
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.4s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:   46.9s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b7ea9b8e140>)), ('classifier', LogisticRegression(C=1, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class='ovr',
+          penalty='l2', random_state=None, solver='liblinear', tol=0.0001,
+          verbose=0))])
+best params: {'classifier__C': 1, 'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.554702991637
+Total time: 48.9533450603
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4648 	 146 	 857
+	 2 	 744 	 714 	 382
+	 3 	 1506 	 129 	 2473
+Percent Accuracy: 67.549%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1825 	 32 	 297
+	 2 	 448 	 49 	 130
+	 3 	 716 	 38 	 332
+Percent Accuracy: 57.047%
+
+Fitting New Model
+Model: svm
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 52923
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 20 candidates, totalling 60 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.0s
+[Parallel(n_jobs=-1)]: Done  60 out of  60 | elapsed:  2.8min finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=1.0, score_func=<function chi2 at 0x2b7ea9b8e140>)), ('classifier', LinearSVC(C=0.1, class_weight=None, dual=False, fit_intercept=True,
+     intercept_scaling=1, loss='squared_hinge', max_iter=1000,
+     multi_class='ovr', penalty='l2', random_state=0, tol=0.0001,
+     verbose=0))])
+best params: {'classifier__C': 0.1, 'feature_reduction__alpha': 1.0}
+best score from that estimator: 0.554099491335
+Total time: 176.023683786
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4921 	 96 	 634
+	 2 	 629 	 869 	 342
+	 3 	 1200 	 102 	 2806
+Percent Accuracy: 74.110%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1816 	 38 	 300
+	 2 	 436 	 61 	 130
+	 3 	 706 	 41 	 339
+Percent Accuracy: 57.305%
+
+Fitting New Model
+Model: naive_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 52923
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 4 candidates, totalling 12 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.0s
+[Parallel(n_jobs=-1)]: Done   3 out of  12 | elapsed:    1.7s remaining:    5.1s
+[Parallel(n_jobs=-1)]: Done  12 out of  12 | elapsed:    4.7s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b7ea9b8e140>)), ('classifier', MultinomialNB(alpha=1.0, class_prior=None, fit_prior=True))])
+best params: {'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.534270195707
+Total time: 5.48473286629
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4343 	 36 	 1272
+	 2 	 753 	 390 	 697
+	 3 	 1527 	 38 	 2543
+Percent Accuracy: 62.730%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1664 	 4 	 486
+	 2 	 386 	 17 	 224
+	 3 	 623 	 6 	 457
+Percent Accuracy: 55.288%
+
+Fitting New Model
+Model: bernoulli_bayes
+Feature Matrix Info:
+  Number of cases 15466
+  Number of features 52923
+Training percentage 0.75
+Scoring used: accuracy
+Regularization bounded between 10^(-2) and 10^(2):
+Splitting data into training and testing...
+Running Model Pipeline...
+Fitting 3 folds for each of 8 candidates, totalling 24 fits
+[Parallel(n_jobs=-1)]: Done   1 jobs       | elapsed:    1.0s
+[Parallel(n_jobs=-1)]: Done   2 out of  24 | elapsed:    1.0s remaining:   11.3s
+[Parallel(n_jobs=-1)]: Done  24 out of  24 | elapsed:    8.2s finished
+Fitting Complete!
+
+best estimator: Pipeline(steps=[('feature_reduction', SelectFpr(alpha=0.8, score_func=<function chi2 at 0x2b7ea9b8e140>)), ('classifier', BernoulliNB(alpha=1.0, binarize=0.1, class_prior=None, fit_prior=True))])
+best params: {'classifier__binarize': 0.1, 'feature_reduction__alpha': 0.8}
+best score from that estimator: 0.537546340202
+Total time: 8.98979306221
+Training Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 4057 	 312 	 1282
+	 2 	 428 	 1003 	 409
+	 3 	 1166 	 211 	 2731
+Percent Accuracy: 67.170%
+Testing Accuracy
+	 	 pred
+true 	 	 1 	 2 	 3
+	 1 	 1538 	 81 	 535
+	 2 	 367 	 69 	 191
+	 3 	 565 	 78 	 443
+Percent Accuracy: 53.013%
