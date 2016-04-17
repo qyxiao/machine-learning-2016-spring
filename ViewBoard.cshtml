@@ -1,0 +1,67 @@
+﻿
+@model TiTa.Models.TicTacToeViewModel
+
+@{
+    ViewBag.Title = "Game Page";
+}
+
+@helper ViewHelper(string value, bool? i)
+{
+if (i == null && !Model.IsXTheWinner && !Model.IsXTheWinner)
+{ <button type="submit" name="button" value="@value" /> }
+
+else if (i == true)
+{ <img src="/Content/X.png" /> }
+
+else if (i == false)
+{ <img src="/Content/O.png" /> }
+}
+
+
+<div id="contents">
+    @if (Model.IsXTheWinner)
+    { <h2>X is the winner!</h2>  }
+    else if (Model.IsOTheWinner)
+    {  <h2>O is the winner!</h2> }
+    else if (Model.IsBoardFull)
+    {  <h2>The board is full. Nobody wins!</h2> }
+    else
+    { <h2>The current player is @(Model.Board.CurrentPlayer)</h2> }
+
+    @if (Model.IsGameOver)
+    { @Html.ActionLink("Start a new game", "NewBoard");
+    }
+
+    <div class="ttt-board">
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(e => e.Board.TopLeft)
+            @Html.HiddenFor(e => e.Board.TopCenter)
+            @Html.HiddenFor(e => e.Board.TopRight)
+            @Html.HiddenFor(e => e.Board.CenterLeft)
+            @Html.HiddenFor(e => e.Board.Center)
+            @Html.HiddenFor(e => e.Board.CenterRight)
+            @Html.HiddenFor(e => e.Board.BottomLeft)
+            @Html.HiddenFor(e => e.Board.BottomCenter)
+            @Html.HiddenFor(e => e.Board.BottomRight)
+            @Html.HiddenFor(e => e.Board.Id)
+            @Html.HiddenFor(e => e.Board.CurrentPlayer)
+            <div class="ttt-box ttt-linebottom ttt-lineright">@Html.Raw((ViewHelper("topleft", Model.Board.TopLeft)))</div>
+            <div class="ttt-box ttt-linebottom ttt-lineleft ttt-lineright">@Html.Raw((ViewHelper("topcenter", Model.Board.TopCenter)))</div>
+            <div class="ttt-box ttt-linebottom ttt-lineleft ttt-linebottom">@Html.Raw((ViewHelper("topright", Model.Board.TopRight)))</div>
+
+            <div class="ttt-box ttt-linetop ttt-linebottom ttt-lineright">@Html.Raw((ViewHelper("centerleft", Model.Board.CenterLeft)))</div>
+            <div class="ttt-box ttt-linetop ttt-linebottom ttt-lineleft ttt-lineright">@Html.Raw((ViewHelper("center", Model.Board.Center)))</div>
+            <div class="ttt-box ttt-linetop ttt-linebottom ttt-lineleft">@Html.Raw((ViewHelper("centerright", Model.Board.CenterRight)))</div>
+
+            <div class="ttt-box ttt-linetop ttt-lineright">@Html.Raw((ViewHelper("bottomleft", Model.Board.BottomLeft)))</div>
+            <div class="ttt-box ttt-linetop ttt-lineleft ttt-lineright">@Html.Raw((ViewHelper("bottomcenter", Model.Board.BottomCenter)))</div>
+            <div class="ttt-box ttt-linetop ttt-lineleft">@Html.Raw((ViewHelper("bottomright", Model.Board.BottomRight)))</div>
+        }
+
+
+    </div>
+
+</div>
