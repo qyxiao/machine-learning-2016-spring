@@ -72,7 +72,7 @@ def item4Parser(f):
 	if endloc==-1:
 		endloc=data.find('Item 7.')
 
-
+	item4text = ''
 	print(startloc,endloc)
 	if endloc!=-1 and startloc!=-1:
 		item4=data[startloc:endloc]
@@ -82,34 +82,28 @@ def item4Parser(f):
 
 	strategyList=[]
 
-	worddict={'wordlist1':['dispositions'],'wordlist2':['conversation'],'wordlist3':['increase shareholder value'],'wordlist4':['election'],'wordlist5':['strategic alternative'],
-	'wordlist6':['attractive investment'],'wordlist7':['letter'],'wordlist8':['purchasing additional shares'],'wordlist9':['voted'],'wordlist10':['nominate'],
-	'wordlist11':['tender'],'wordlist12':['with management'],'wordlist13':['chief executive officer'],'wordlist14':['strategy'],'wordlist15':['undervalued situation']}
+	worddict={'wordlist1':['dispositions'],'wordlist2':['conversation'],'wordlist3':['increase shareholder value'],'wordlist4':['communicat'],'wordlist5':['election'],'wordlist6':['strategic alternative'],
+	'wordlist7':['realize'],'wordlist8':['long-term'],'wordlist9':['attractive investment'],'wordlist10':['letter'],'wordlist11':['purchasing additional shares'],'wordlist12':['favorable'],
+	'wordlist13':['met','meet'],'wordlist14':['voted'],'wordlist15':['nominate'],'wordlist16':['benefit'],'wordlist17':['tender'],'wordlist18':['increase'],'wordlist19':['with management'],
+	'wordlist20':['active'],'wordlist21':['chief executive officer'],'wordlist22':['monitor'],'wordlist23':['strategy'],'wordlist24':['undervalued situation']}
 
 	new_item4 = item4text.replace('\n',' ').lower()
-	for i in range(1,16):
+
+	#for i in range(1,16):
+	#	dictName='wordlist'+str(i)
+	#	if " "+worddict[dictName][0] in new_item4:
+	#		print("Item 4 Parsed")
+	#		strategyList.append(i)
+
+	for i in range(1,25):
 		dictName='wordlist'+str(i)
-		if worddict[dictName][0] in new_item4:
-			print("Item 4 Parsed type 1")
+		if any(" "+word in new_item4 for word in worddict[dictName]):
+		#if (len([w for w in worddict[dictName] if w in tokens])>=1) and i!=22:
+			print("Item 4 Parsed")
+			print(i)
+			#print([w for w in worddict[dictName] if w in tokens])
 			strategyList.append(i)
 
-	tokens = [] #nltk.word_tokenize(item4text)
-	worddict={'wordlist16':['communicate','communication','communicated','communicating'],'wordlist17':['undervalued','attractive'],'wordlist18':['met','meet','meeting'],'wordlist19':['favorable','realize','profit','profits'],
-	'wordlist20':['active'],'wordlist21':['benefit','benefits'],'wordlist22':['increase','increasing','increased','improve','improved','improving'],'wordlist23':['good','maximize','long-term'],
-	'wordlist24':['strategy','strategic','strategies'],'wordlist25':['monitor'],'wordlist26':['designate'],'wordlist27':['facilitate']}
-	
-	for i in range(16,28):
-		dictName='wordlist'+str(i)
-		if (len([w for w in worddict[dictName] if w in tokens])>=1) and i!=22:
-			print("Item 4 Parsed type 2")
-			#print(i)
-			#print([w for w in worddict[dictName] if w in tokens])
-			strategyList.append(i)
-		elif (len([w for w in worddict[dictName] if w in tokens])>=1) and ('value' in tokens or 'values' in tokens or 'profit' in tokens or 'profits' in tokens) and i==22:
-			print("Item 4 Parsed type 3")
-			#print(i)
-			#print([w for w in worddict[dictName] if w in tokens])
-			strategyList.append(i)
 
 	strategyList_1word=strategyList
 
@@ -124,7 +118,7 @@ def item4Parser(f):
 	for row in data:
 		word1=row[1]
 		word2=row[2]
-		if word1 in new_item4 and word2 in new_item4:
+		if " "+word1 in new_item4 and " "+word2 in new_item4:
 			strategyList.append(row[0])
 
 	strategyList_2word=strategyList
@@ -141,12 +135,13 @@ def item4Parser(f):
 		word1=row[1]
 		word2=row[2]
 		word3=row[3]
-		if word1 in new_item4 and word2 in new_item4 and word3 in new_item4:
+		if " "+word1 in new_item4 and " "+word2 in new_item4 and " "+word3 in new_item4:
 			strategyList.append(row[0])
 
 	strategyList_3word=strategyList	
 
 	strategyDict={'1word':strategyList_1word,'2word':strategyList_2word,'3word':strategyList_3word}
+
 
 
 	return strategyDict

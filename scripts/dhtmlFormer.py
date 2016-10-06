@@ -76,20 +76,12 @@ class dhtmlFormmaker():
         SIC : %(sic)s <br>
         Filer Name: %(iname)s <br>
         Filer Cik: %(icik)s <br>
-        <!--Filer Symbol : %(filedSymbol)s <br>-->
+        <!-- Filer Symbol : %(filedSymbol)s <br> -->
     </p>
 	"""
         htmlStart = htmlStart%{"issuerTradingSymbol":f[7], "sic":f[13], "iname":f[9], "icik":f[8], "filedSymbol":f[10]}
     
         html = ""
-        #html += """<br>Category of Source</br>"""
-        #html += """<br>SC: Subject Company (Company whose securities are being acquired)</br>"""
-        #html += """<br>BK: Bank</br>"""
-        #html += """<br>AF: Affiliate (of reporting person)</br>"""
-        #html += """<br>WC: Working Capital (of reporting person)</br>"""
-        #html += """<br>PF: Personal Funds (of reporting person)</br>"""
-        #html += """<br>OO: Other</br>"""
-        #html += """<br>NA: Not available</br>"""
 
         htmlStart = html + htmlStart
         return htmlStart
@@ -98,7 +90,6 @@ class dhtmlFormmaker():
     def optimizationStrategyInfo(self,f):
         global optimizationFlag
         optimizationFlag = 0
-        #print(optimizationFlag)
         yahoo = yahoo_finance.Share(f[7])
         yahoo.refresh()
         price = yahoo.get_price()
@@ -117,9 +108,9 @@ class dhtmlFormmaker():
                 mktcap=float(mktcap)/1000
         mktcapRange=[100,250,500,1000,float('inf')]
         dollarValueRange=[0,20,50,150,float('inf')]
-        percentChangeRange=[4,6,10,100]
+        percentChangeRange=[4,6,10,100,float('inf')]
 
-        #print(mktcap)
+        print(mktcap)
         index=0
         mktcapFlag=0
         while(mktcap>=mktcapRange[index] and mktcap!='NA'):
@@ -186,8 +177,8 @@ class dhtmlFormmaker():
             #<br>Strategy No. :  <br>Percent :  <br>Dollar Value($m) :  <br>Market_Cap($m) :  <br>Sample Size:
             #""" 
             htmlStrategyInfo+=self.optimizationStrategyHist([])
-        print("optimization")
-	return htmlStrategyInfo
+        
+        return htmlStrategyInfo
 
 
     def textAnalysisStrategyInfo(self,f):
@@ -197,10 +188,9 @@ class dhtmlFormmaker():
         textAnalysisFlag1 = 0
         textAnalysisFlag2 = 0
         textAnalysisFlag3 = 0
-        #print(textAnalysisFlag3)
-       
+
+
         strategyDict=item4Parser(f)
-        #print(strategyDict)
         strategyList_1word=strategyDict['1word']
         strategyList_2word=strategyDict['2word']
         strategyList_3word=strategyDict['3word']
@@ -208,9 +198,6 @@ class dhtmlFormmaker():
                 <p><u><b>Text Analysis Strategy Criteria Info</b></u>
                 <br>Close Price > $1; From 2005.1-2015.5; Market_Cap > $100m; Dollar Volume > $0.5m; Only Common Stocks; No IPO/Acquisition; Slippage 0.5&#37;
                 <br>"""
-        #print(strategyList_1word)
-        #print(strategyList_2word)
-        #print(strategyList_3word)
         if len(strategyList_1word)>0:
             for strategyID in strategyList_1word:
                 for i in range(5):
@@ -305,7 +292,7 @@ class dhtmlFormmaker():
             #<br>Strategy No. :   <br>Keywords :  <br>Sample Size:
             #"""
             #htmlStrategyInfo+=self.textAnalysisStrategyHist([])
-        print("test") 
+            
 
 	return htmlStrategyInfo
 
@@ -339,7 +326,7 @@ class dhtmlFormmaker():
         htmltitle = "<p><b><u>Optimization Strategy Historical Performance</u></b><br>"
         htmltitle += self.createTitle(["stats","1Day", "3Day","1week", "2week" ,"3week", "1Month"])
         if len(f)>0: 
-            #print(f)
+            print(f)
             f=f[0]
             htmlStrategyHist = """
                 <tr>
@@ -387,10 +374,10 @@ class dhtmlFormmaker():
         htmltitle += self.createTitle(["stats","1week", "2week" ,"3week", "1Month"])
         htmlStrategyHist = ""
         if len(f)>0: 
-            #print(f)
+            print(f)
             f=f[0]
-            #print(f)
-            #print(len(f))
+            print(f)
+            print(len(f))
             if len(f)==11:
                 output=(f[3],f[4],f[5],f[6],f[7]*100,f[8]*100,f[9]*100,f[10]*100)
             elif len(f)==12:
@@ -398,7 +385,7 @@ class dhtmlFormmaker():
             elif len(f)==13:
                 output=(f[5],f[6],f[7],f[8],f[9]*100,f[10]*100,f[11]*100,f[12]*100)
 
-            #print(output)
+            print(output)
 
             htmlStrategyHist += """
 	            <tr>
@@ -626,12 +613,12 @@ class dhtmlFormmaker():
 
     def makeWA(self, f):
         html = self.makeStart(f)
-        #print("start is done")
         html += self.makeforms(f)
-        #print("forms is done")
         html += self.makeStrategy(f)
-        print("strategy is done")
-        html += """<br>Category of Source</br>"""
+        #html += self.makeRptOwnerHist()
+        #sendadvancedemail("The html generating is right", "point2", html)
+        #html += self.makeforms(f)
+        html += """<b><br>Category of Source</br></b>"""
         html += """<br>SC: Subject Company (Company whose securities are being acquired)</br>"""
         html += """<br>BK: Bank</br>"""
         html += """<br>AF: Affiliate (of reporting person)</br>"""
@@ -639,9 +626,6 @@ class dhtmlFormmaker():
         html += """<br>PF: Personal Funds (of reporting person)</br>"""
         html += """<br>OO: Other</br>"""
         html += """<br>NA: Not available</br>"""
-        #html += self.makeRptOwnerHist()
-        #sendadvancedemail("The html generating is right", "point2", html)
-        #html += self.makeforms(f)
         return html,optimizationFlag,textAnalysisFlag1,textAnalysisFlag2,textAnalysisFlag3
 
 if __name__ == "__main__":

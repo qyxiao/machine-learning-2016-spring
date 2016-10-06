@@ -51,7 +51,7 @@ def autorun(current):
     cnx = mysql.connector.connect(user='fanyang', host= 'edgar-2015-05-17.ciwfn1kzluad.us-east-1.rds.amazonaws.com', 
         password= 'yangfan19931001', database='SC13D')
     cursor = cnx.cursor()
-    add_column = ("INSERT INTO 13D_form_testq "
+    add_column = ("INSERT INTO 13D_form_new2 "
         "(accessNum, acceptedDate, acceptedTime, fileDate, formType, subjectCik, subjectName, subjectSymbol, filedCik, filedName, filedSymbol, CUSIP, fiscalYearEnd, siClass, siClassNum, sourceofFund, AggregateAmount, PercentAmount, txtlink, htmllink, market_cap) "
         "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
@@ -79,15 +79,35 @@ def autorun(current):
         else:
             subjectSymbol = 'NONE'
 
-
         filedSymbol = 'NONE'
+        """
+        filedCik = result[7]
+        url = 'http://yahoo.brand.edgar-online.com/default.aspx?cik=' + str(filedCik)
+        try:
+            data = urllib2.urlopen(url).read()
+        except Exception as e:
+            print e
+        
+        print('filedCik is:' + str(filedCik))
+        if data:       
+            r = data.split('\n')[144]
+            if (r.strip().startswith('<span id="ctl00_cphColBottom_ucSearchFilingResults1_lblTableTop">')):
+                core = r.split('>')[1]
+                core = core.split('<')[0]
+                if core.strip() == '':
+                    filedSymbol = 'NONE'
+                else:
+                    core = core.rsplit('(',1)[0].strip()
+                    filedSymbol = core.split(':')[1].strip()
+        else:
+            filedSymbol = 'NONE'
+        """
         
         result = list(result)
         result.insert(7, subjectSymbol)
         result.insert(10, filedSymbol)
         #print result
 
-        print(subjectSymbol)
         if (subjectSymbol != 'NONE'):
             yahoo = yahoo_finance.Share(subjectSymbol)
             yahoo.refresh()
@@ -98,7 +118,16 @@ def autorun(current):
             market_cap = 'NA'
         result.append(market_cap)
         result = tuple(result)
-
+        """
+        if (symbol != None):
+            yahoo = Share(symbol)
+            yahoo.refresh()
+            market_cap = yahoo.get_market_cap()
+            price = yahoo.get_price()
+        else:
+            market_cap = 'N/A'
+            price = 'N/A'
+        """
         try:
             cursor.execute(add_column, result)
             newcurrent.append(result[0])
@@ -107,9 +136,14 @@ def autorun(current):
             print e
         cnx.commit()
         
-
+        #new_result = maker.makeWA(result)
+        #print("NEW RESULT:   *****"len(new_result))
+        #html = new_result[0]
+        #optimizationFlag = new_result[1]
+        #textAnalysisFlag1 = new_result[2]
+        #textAnalysisFlag2 = new_result[3]
+        #textAnalysisFlag3 = new_result[4]
         html,optimizationFlag,textAnalysisFlag1,textAnalysisFlag2,textAnalysisFlag3 = maker.makeWA(result)
-        print("html is done")
 
 
         if optimizationFlag == 1:
@@ -133,7 +167,7 @@ def autorun(current):
             W3Alert = ''
 
         Alert = ' '+optimizationAlert+W1Alert+W2Alert+W3Alert+" : "
-        if Alert!=' : ':
+        if Alert!='  : ':
             Alert = '!!'+Alert
 
         sendmail = False
@@ -144,7 +178,7 @@ def autorun(current):
             sendmail = True
         elif market_cap.endswith("M"):
             market_cap = market_cap.split('.')[0]
-            if (int(market_cap) >= 50):
+            if (int(market_cap) >= 10):
                 market_cap += "M"
                 sendmail = True
         elif market_cap.endswith("B"):
@@ -161,8 +195,6 @@ def autorun(current):
             sendadvancedemail("13D" + Alert + subjectSymbol + ": " + str(result[17]) + "%, $" + str(market_cap) + " Percent Parsed Wrongness", " ", html)
         elif int(result[16]) == 0 and sendmail:
             sendadvancedemail("13D" + Alert + subjectSymbol + ": " + str(result[17]) + "%, $" + str(market_cap) + " Amount Parsed Wrongness", " ", html)
-        #elif result[11] == '000000000' and sendmail:
-        #    sendadvancedemail("13D" + Alert + subjectSymbol + ": " + str(result[17]) + "%, $" + str(market_cap)  + " CUSIP Parsed Wrongness", " ", html)
         elif sendmail:
             sendadvancedemail("13D" + Alert + subjectSymbol + ": " + str(result[17]) + "%, $" + str(market_cap), " ", html)
         print("fininshing sending email")
@@ -176,13 +208,78 @@ def autorun(current):
     #    print e
     return current + newcurrent
 
+"""
+def test():
 
+        maker = htmlFormmaker()
+        link = "https://www.sec.gov/Archives/edgar/data/1041175/000119312516590234/0001193125-16-590234.txt"
+        result = extract_info(link) 
+        
+        subjectCik = result[5]
+        url = 'http://yahoo.brand.edgar-online.com/default.aspx?cik=' + str(subjectCik)
+        try:
+            data = urllib2.urlopen(url).read()
+        except Exception as e:
+            print e
+        
+        print('subjectCik is:' + str(subjectCik))
+        if data:       
+            r = data.split('\n')[144]
+            if (r.strip().startswith('<span id="ctl00_cphColBottom_ucSearchFilingResults1_lblTableTop">')):
+                core = r.split('>')[1]
+                core = core.split('<')[0]
+                if core.strip() == '':
+                    subjectSymbol = 'NONE'
+                else:
+                    core = core.rsplit('(',1)[0].strip()
+                    subjectSymbol = core.split(':')[1].strip()
+        else:
+            subjectSymbol = 'NONE'
+
+        filedCik = result[7]
+        url = 'http://yahoo.brand.edgar-online.com/default.aspx?cik=' + str(filedCik)
+        try:
+            data = urllib2.urlopen(url).read()
+        except Exception as e:
+            print e
+        
+        print('filedCik is:' + str(filedCik))
+        if data:       
+            r = data.split('\n')[144]
+            if (r.strip().startswith('<span id="ctl00_cphColBottom_ucSearchFilingResults1_lblTableTop">')):
+                core = r.split('>')[1]
+                core = core.split('<')[0]
+                if core.strip() == '':
+                    filedSymbol = 'NONE'
+                else:
+                    core = core.rsplit('(',1)[0].strip()
+                    filedSymbol = core.split(':')[1].strip()
+        else:
+            filedSymbol = 'NONE'
+        
+        result = list(result)
+        result.insert(7, subjectSymbol)
+        result.insert(10, filedSymbol)
+        result = tuple(result)
+        print result
+        
+        html = maker.makeWA(result, subjectSymbol, filedSymbol)
+
+        if int(float(result[17])) == 0:
+            sendadvancedemail("13D: " + subjectSymbol + ": " + str(result[17]) + "%" + " Percent Parsed Wrongness", " ", html)
+        elif int(result[16]) == 0:
+            sendadvancedemail("13D: " + subjectSymbol + ": " + str(result[17]) + "%" + " Amount Parsed Wrongness", " ", html)
+        elif result[11] == '000000000':
+            sendadvancedemail("13D: " + subjectSymbol + ": " + str(result[17]) + "%" + " CUSIP Parsed Wrongness", " ", html)
+        else:
+            sendadvancedemail("13D: " + subjectSymbol + ": " + str(result[17]) + "%", " ", html)
+"""
 
 if __name__ == "__main__":
     cnx = mysql.connector.connect(user='fanyang', host= 'edgar-2015-05-17.ciwfn1kzluad.us-east-1.rds.amazonaws.com', 
         password= 'yangfan19931001', database='fan_new')
     cursor = cnx.cursor()
-    select_access = ("SELECT accessNum FROM 13D_form_testq")
+    select_access = ("SELECT accessNum FROM 13D_form_new2")
     cursor.execute(select_access)
     data = cursor.fetchall()
     cursor.close()
@@ -191,9 +288,9 @@ if __name__ == "__main__":
     current = [entity[0] for entity in current]
     print current
     
-    #while (1):
-    current = autorun(current)
-    time.sleep(60)
+    while (1):
+        current = autorun(current)
+        time.sleep(60)
     
     #test()
 
