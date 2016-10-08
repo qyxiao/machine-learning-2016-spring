@@ -173,28 +173,33 @@ public class MaximumEntropyClassifier<I, F, L> implements
 		 * of that likelihood wrt each weight parameter.
 		 */
 		private Pair<Double, double[]> calculate(double[] x) {
-			double objective = 0.0;
-			double[] derivatives = DoubleArrays.constantArray(0.0, dimension());
-			// TODO: compute the objective and its derivatives
-			// TODO
+            double objective = 0.0;
+            double[] derivatives = DoubleArrays.constantArray(0.0, dimension());
+            double[] goldLiklihood = DoubleArrays.constantArray(0.0, data.length);
+            for (int i = 0; i < data.length; i++) {
+                    goldLiklihood[i] =
+                                    getLogProbabilities(data[i], x, encoding, indexLinearizer)[data[i].getLabelIndex()];
+                    objective -= goldLiklihood[i];
+            }
+            goldLiklihood = DoubleArrays.exponentiate(goldLiklihood);
+    
+            double penalty = DoubleArrays.innerProduct(x, x) / ( 2 * sigma * sigma);
+            objective += penalty;
 
-			// logProb
-
-			// dummy code
-			objective = 42.0;
-			for (int i = 0; i < derivatives.length; i++) {
-				derivatives[i] = 0.0;
-			}
-			// end dummy code
-
-			// TODO: incorporate penalty terms into the objective and
-			// derivatives
-			// penalties
-
-			// TODO
-			// TODO
-			return new Pair<Double, double[]>(objective, derivatives);
-		}
+            for (int y = 0; y < encoding.getNumLabels(); y++) {
+                    for (int k = 0; k < data.length; k++) {
+                            for (int m =0; m < data[k].getNumActiveFeatures(); m++) {
+                                    derivatives[indexLinearizer.getLinearIndex(data[k].getFeatureIndex(m), y)]
+                                                    -= ( (y == data[k].getLabelIndex() ? 1 : 0)
+                                                                    - Math.exp(getLogProbabilities(data[k], x, encoding, indexLinearizer)[y]) )
+                                                    * data[k].getFeatureCount(m);
+                            }
+                    }
+            }
+            derivatives = DoubleArrays.add(
+                            DoubleArrays.multiply(x, 1.0 / (sigma * sigma)), derivatives);
+            return new Pair<Double, double[]>(objective, derivatives);
+    }
 
 		public ObjectiveFunction(Encoding<F, L> encoding, EncodedDatum[] data,
 				IndexLinearizer indexLinearizer, double sigma) {
@@ -370,17 +375,49 @@ public class MaximumEntropyClassifier<I, F, L> implements
 		// TODO
 		// TODO
 		// TODO
-
+		double[] record = DoubleArrays.constantArray(
+				0, encoding.getNumLabels());
+        for(int i = 0; i <encoding.getNumLabels();i++ ){
+        	for(int j = 0; j<datum.getNumActiveFeatures();j++ ){
+        		record[i]=record[i]+datum.getFeatureCount(j)*weights[indexLinearizer.getLinearIndex(datum.getFeatureIndex(j), i)];
+        	}
+        }
+		
 		// dummy code
-		double[] logProbabilities = DoubleArrays.constantArray(
-				Double.NEGATIVE_INFINITY, encoding.getNumLabels());
-		logProbabilities[0] = 0.0;
-		return logProbabilities;
+		//double[] logProbabilities = DoubleArrays.constantArray(
+		//		Double.NEGATIVE_INFINITY, encoding.getNumLabels());
+		//logProbabilities[0] = 0.0;
+		
+		double sum =Math.log(DoubleArrays.add( DoubleArrays.exponentiate(record)));
+		double[] result = DoubleArrays.constantArray(0, encoding.getNumLabels());
+		for(int index = 0; index < record.length; index ++) {
+			result[index] = record[index] - sum;
+		}
+		return result;
 		// end dummy code
 
 		// TODO
 	}
 
+	
+	
+	//// not sure if this is a good thing to do
+	public double[] getProbabilities(EncodedDatum encodedDatum) {
+		double[] logProbabilities = getLogProbabilities(encodedDatum, weights,
+				encoding, indexLinearizer);
+		double[] probability = new double[logProbabilities.length];
+		for (int labelIndex = 0; labelIndex < logProbabilities.length; labelIndex++) {
+			double logProbability = logProbabilities[labelIndex];
+			probability[labelIndex] = Math.exp(logProbability);
+		}
+		//// could have 0 error
+		//double sum = 1/DoubleArrays.add(probability);
+		//return DoubleArrays.multiply(probability, sum);
+		return probability;  // return raw exp list, not proba
+	}
+	
+	
+	
 	public Counter<L> getProbabilities(I input) {
 		FeatureVector<F> featureVector = new BasicFeatureVector<F>(
 				featureExtractor.extractFeatures(input));
@@ -404,6 +441,7 @@ public class MaximumEntropyClassifier<I, F, L> implements
 			L label = encoding.getLabel(labelIndex);
 			probabiltyCounter.setCount(label, probability);
 		}
+		
 		return probabiltyCounter;
 	}
 
@@ -448,7 +486,7 @@ public class MaximumEntropyClassifier<I, F, L> implements
 			}
 		};
 		MaximumEntropyClassifier.Factory<String[], String, String> maximumEntropyClassifierFactory = new MaximumEntropyClassifier.Factory<String[], String, String>(
-				1.0, 20, featureExtractor);
+				2.0, 20, featureExtractor);
 		ProbabilisticClassifier<String[], String> maximumEntropyClassifier = maximumEntropyClassifierFactory
 				.trainClassifier(trainingData);
 		System.out.println("Probabilities on test instance: "
